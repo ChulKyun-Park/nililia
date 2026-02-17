@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)",
+      "Bash(findstr:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: scaffold Next.js App Router with navigation and all routes\n\n- Add package.json, tsconfig.json, next.config.ts, tailwind, postcss, eslint configs\n- Add lib/content.ts as single source of truth for all page copy\n- Add reusable primitives: Container, Section, Button, Card, ImageSlot\n- Add Header with desktop hover+keyboard dropdowns and mobile hamburger\n- Add Footer with site links\n- Add app/layout.tsx wiring Header and Footer\n- Add pages: / \\(home\\), /about, /service, /contentsfly, /contentsflys,\n  /news/stories, /news/announcements, /careers\n- /service: Hero + Our Products cards + Translation & Localization 6-card grid\n- All routes build to static HTML; TypeScript strict mode passes clean\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
