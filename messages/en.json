@@ -1,0 +1,10 @@
+{
+  "common": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "cases": "Cases",
+    "news": "News",
+    "careers": "Careers"
+  }
+}

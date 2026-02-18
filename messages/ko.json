@@ -1,0 +1,10 @@
+{
+  "common": {
+    "home": "홈",
+    "about": "회사소개",
+    "services": "서비스",
+    "cases": "고객사례",
+    "news": "뉴스",
+    "careers": "채용"
+  }
+}

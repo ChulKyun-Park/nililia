@@ -12,7 +12,7 @@ export const navConfig = {
     {
       label: "Business",
       children: [
-        { label: "Our Service", href: "/service" },
+        { label: "Our Service", href: "/services" },
         { label: "Contentsfly", href: "/contentsfly" },
         { label: "Contentsflys", href: "/contentsflys" },
       ],
@@ -33,7 +33,7 @@ export const homeContent = {
     heading: "Language Without Limits",
     subheading:
       "We deliver precise, culturally attuned translations that help your brand communicate authentically in every market.",
-    cta: { label: "Explore Our Services", href: "/service" },
+    cta: { label: "Explore Our Services", href: "/services" },
   },
   features: [
     {
