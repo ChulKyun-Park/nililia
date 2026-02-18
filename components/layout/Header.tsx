@@ -1,7 +1,5 @@
-"use client";
-
 import { useState, useRef, useEffect, useCallback } from "react";
-import Link from "next/link";
+// import Link from "next/link"; // 사용되지 않으면 삭제
 import { usePathname } from "next/navigation";
 import { navConfig, siteConfig } from "@/lib/content";
 import Container from "@/components/ui/Container";
@@ -74,14 +72,14 @@ function DropdownMenu({
           <ul className="mt-1 space-y-1 pl-4">
             {item.children.map((child) => (
               <li key={child.href}>
-                <Link
+                <a
                   href={child.href}
                   className={`block py-2 text-sm ${
                     pathname === child.href ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"
                   }`}
                 >
                   {child.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -128,7 +126,7 @@ function DropdownMenu({
         >
           {item.children.map((child) => (
             <li key={child.href} role="none">
-              <Link
+              <a
                 href={child.href}
                 role="menuitem"
                 onClick={close}
@@ -137,7 +135,7 @@ function DropdownMenu({
                 }`}
               >
                 {child.label}
-              </Link>
+              </a>
             </li>
           ))}
         </ul>
@@ -161,12 +159,12 @@ export default function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link
+          <a
             href="/"
             className="text-xl font-bold text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 rounded"
           >
             {siteConfig.name}
-          </Link>
+          </a>
 
           {/* Desktop nav */}
           <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6">
@@ -180,7 +178,7 @@ export default function Header() {
                 );
               }
               return (
-                <Link
+                <a
                   key={item.href}
                   href={item.href!}
                   className={`text-sm font-medium px-1 py-2 rounded transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 ${
@@ -190,7 +188,7 @@ export default function Header() {
                   }`}
                 >
                   {item.label}
-                </Link>
+                </a>
               );
             })}
           </nav>
@@ -233,7 +231,7 @@ export default function Header() {
                   );
                 }
                 return (
-                  <Link
+                  <a
                     key={item.href}
                     href={item.href!}
                     className={`block py-2 text-base font-medium ${
@@ -243,7 +241,7 @@ export default function Header() {
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 );
               })}
             </nav>

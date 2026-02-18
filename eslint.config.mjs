@@ -1,10 +1,15 @@
-import nextPlugin from "@next/eslint-plugin-next";
+import js from "@eslint/js";
+import tsParser from "@typescript-eslint/parser";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
+
+import importPlugin from "eslint-plugin-import";
+import jsxA11y from "eslint-plugin-jsx-a11y";
+import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 
 export default [
-  // Next native flat config (avoids FlatCompat circular refs)
-  ...nextPlugin.flatConfig.coreWebVitals,
+  js.configs.recommended,
 
-  // Ignores
   {
     ignores: [
       ".next/**",
@@ -17,16 +22,32 @@ export default [
     ],
   },
 
-  // Extra strict rules (no new deps)
   {
     files: ["**/*.{js,cjs,mjs,jsx,ts,tsx}"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parser: tsParser,
+      parserOptions: {
+        ecmaFeatures: { jsx: true }
+      }
+    },
+    plugins: {
+      "@typescript-eslint": tsPlugin,
+      import: importPlugin,
+      "jsx-a11y": jsxA11y,
+      react,
+      "react-hooks": reactHooks,
+    },
+    settings: {
+      react: { version: "detect" },
+      "import/resolver": { typescript: true },
+    },
     rules: {
-      /* Determinism & safety */
       "no-debugger": "error",
       "no-alert": "error",
       "no-console": ["error", { allow: ["warn", "error"] }],
 
-      /* Correctness */
       eqeqeq: ["error", "always", { null: "ignore" }],
       curly: ["error", "all"],
       "no-implicit-coercion": "error",
@@ -36,10 +57,8 @@ export default [
       "no-useless-concat": "error",
       "no-useless-rename": "error",
 
-      /* Variables */
-      "no-var": "error",
-      "prefer-const": ["error", { destructuring: "all" }],
-      "no-unused-vars": [
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": [
         "error",
         {
           args: "after-used",
@@ -50,11 +69,22 @@ export default [
           ignoreRestSiblings: true
         }
       ],
+      "no-var": "error",
+      "prefer-const": ["error", { destructuring: "all" }],
 
-      /* Style predictability */
+      "import/no-duplicates": "error",
+      "import/newline-after-import": "error",
+
+      "react/jsx-boolean-value": ["error", "never"],
+      "react/self-closing-comp": "error",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn",
+
+      "jsx-a11y/alt-text": "error",
+
       "object-shorthand": ["error", "always"],
       "prefer-template": "error",
-      "no-multi-spaces": ["error", { ignoreEOLComments: false }]
-    }
-  }
+      "no-multi-spaces": ["error", { ignoreEOLComments: false }],
+    },
+  },
 ];

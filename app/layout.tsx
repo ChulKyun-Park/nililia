@@ -1,3 +1,4 @@
+import React from "react"; // React 추가 (필수)
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
