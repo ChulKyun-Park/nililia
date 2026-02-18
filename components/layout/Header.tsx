@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef, useEffect, useCallback } from "react";
 // import Link from "next/link"; // 사용되지 않으면 삭제
 import { usePathname } from "next/navigation";
