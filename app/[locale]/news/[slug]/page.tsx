@@ -12,9 +12,10 @@ async function getNewsDetail(locale: string, slug: string) {
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const item = await getNewsDetail(params.locale, params.slug);
+  const { locale, slug } = await params;
+  const item = await getNewsDetail(locale, slug);
 
   if (!item) {
     return {};
@@ -120,9 +121,9 @@ function renderContentBlocks(blocks: NotionContentBlock[]) {
 export default async function LocalizedNewsDetailPage({
   params,
 }: {
-  params: { locale: string; slug: string };
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { locale, slug } = params;
+  const { locale, slug } = await params;
   const item = await getNewsDetail(locale, slug);
 
   if (!item) {

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "Latest news updates.",
 };
 
-export default async function LocalizedNewsListPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function LocalizedNewsListPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const items = await fetchNewsList(locale);
 
   return (

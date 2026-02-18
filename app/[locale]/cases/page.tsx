@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "Latest case studies.",
 };
 
-export default async function LocalizedCaseListPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default async function LocalizedCaseListPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const items = await fetchCaseList(locale);
 
   return (
