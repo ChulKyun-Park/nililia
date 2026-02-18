@@ -1,20 +1,10 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// eslint-config-next를 Flat Config에서 쓰기 위한 호환 레이어
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+import nextPlugin from "@next/eslint-plugin-next";
 
 export default [
-  // Next 권장 + core-web-vitals (가급적 유지)
-  ...compat.extends("next/core-web-vitals"),
+  // Next native flat config (avoids FlatCompat circular refs)
+  ...nextPlugin.flatConfig.coreWebVitals,
 
-  // 공통 ignore
+  // Ignores
   {
     ignores: [
       ".next/**",
@@ -27,28 +17,24 @@ export default [
     ],
   },
 
-  // 엄격 규칙 (플러그인 추가 없이 가능한 최대치)
+  // Extra strict rules (no new deps)
   {
     files: ["**/*.{js,cjs,mjs,jsx,ts,tsx}"],
-    languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-    },
     rules: {
       /* Determinism & safety */
       "no-debugger": "error",
-      "no-console": ["error", { allow: ["warn", "error"] }],
       "no-alert": "error",
+      "no-console": ["error", { allow: ["warn", "error"] }],
 
-      /* Code quality */
+      /* Correctness */
       eqeqeq: ["error", "always", { null: "ignore" }],
       curly: ["error", "all"],
       "no-implicit-coercion": "error",
+      "no-throw-literal": "error",
       "no-return-await": "error",
       "no-useless-catch": "error",
       "no-useless-concat": "error",
       "no-useless-rename": "error",
-      "no-throw-literal": "error",
 
       /* Variables */
       "no-var": "error",
