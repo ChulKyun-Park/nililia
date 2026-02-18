@@ -54,7 +54,7 @@ export default [
       /* Style predictability */
       "object-shorthand": ["error", "always"],
       "prefer-template": "error",
-      "no-multi-spaces": ["error", { ignoreEOLComments: false }],
-    },
-  },
+      "no-multi-spaces": ["error", { ignoreEOLComments: false }]
+    }
+  }
 ];
