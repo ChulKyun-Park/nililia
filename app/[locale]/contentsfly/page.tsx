@@ -2,25 +2,25 @@ import type { Metadata } from "next";
 import Section from "@/components/ui/Section";
 import Card from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
-import { contentsflysContent } from "@/lib/content";
+import { contentsflyContent } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: "Contentsflys",
-  description: contentsflysContent.subheading,
+  title: "Contentsfly",
+  description: contentsflyContent.subheading,
 };
 
-export default function ContentsflysPage() {
-  const { heading, subheading, body, features } = contentsflysContent;
+export default function ContentsflyPage() {
+  const { heading, subheading, body, features } = contentsflyContent;
 
   return (
     <>
-      <section className="bg-gradient-to-br from-indigo-800 to-indigo-600 text-white py-20">
+      <section className="bg-gradient-to-br from-blue-800 to-blue-600 text-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold">{heading}</h1>
-          <p className="mt-3 text-xl text-indigo-100">{subheading}</p>
-          <p className="mt-4 text-indigo-200 max-w-2xl">{body}</p>
+          <p className="mt-3 text-xl text-blue-100">{subheading}</p>
+          <p className="mt-4 text-blue-200 max-w-2xl">{body}</p>
           <div className="mt-8">
-            <Button href="/service" variant="secondary">Back to Service</Button>
+            <Button href="/services" variant="secondary">Back to Service</Button>
           </div>
         </div>
       </section>

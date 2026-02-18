@@ -1,206 +1,80 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { navConfig, siteConfig } from "@/lib/content";
+import { useState } from "react";
+import { useLocale } from "next-intl";
+import { Link, usePathname } from "@/i18n/navigation";
 import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import LanguageDropdown from "@/components/layout/LanguageDropdown";
 
-type NavItem =
-  | { label: string; href: string; children?: undefined }
-  | { label: string; href?: undefined; children: { label: string; href: string }[] };
-
-function DropdownMenu({
-  item,
-  isMobile = false,
-}: {
-  item: NavItem & { children: { label: string; href: string }[] };
-  isMobile?: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-
-  const close = useCallback(() => setOpen(false), []);
-
-  // Close when focus leaves the container
-  useEffect(() => {
-    if (isMobile) return;
-    const el = containerRef.current;
-    if (!el) return;
-    const handleFocusOut = (e: FocusEvent) => {
-      if (!el.contains(e.relatedTarget as Node)) {
-        close();
-      }
-    };
-    el.addEventListener("focusout", handleFocusOut);
-    return () => el.removeEventListener("focusout", handleFocusOut);
-  }, [isMobile, close]);
-
-  // Close on Escape
-  useEffect(() => {
-    if (!open) return;
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        close();
-        containerRef.current?.querySelector("button")?.focus();
-      }
-    };
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [open, close]);
-
-  if (isMobile) {
-    return (
-      <div>
-        <button
-          type="button"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="flex w-full items-center justify-between py-2 text-base font-medium text-gray-700 hover:text-gray-900"
-        >
-          {item.label}
-          <svg
-            className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-        {open && (
-          <ul className="mt-1 space-y-1 pl-4">
-            {item.children.map((child) => (
-              <li key={child.href}>
-                <Link
-                  href={child.href}
-                  className={`block py-2 text-sm ${
-                    pathname === child.href ? "font-semibold text-blue-600" : "text-gray-600 hover:text-gray-900"
-                  }`}
-                >
-                  {child.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        type="button"
-        aria-expanded={open}
-        aria-haspopup="true"
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            setOpen((v) => !v);
-          }
-        }}
-        className="flex items-center gap-1 text-sm font-medium text-gray-700 hover:text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 rounded px-1 py-2"
-      >
-        {item.label}
-        <svg
-          className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-
-      {open && (
-        <ul
-          role="menu"
-          className="absolute left-0 top-full z-50 mt-1 min-w-[180px] rounded-lg border border-gray-200 bg-white py-1 shadow-lg"
-        >
-          {item.children.map((child) => (
-            <li key={child.href} role="none">
-              <Link
-                href={child.href}
-                role="menuitem"
-                onClick={close}
-                className={`block px-4 py-2 text-sm transition-colors hover:bg-gray-50 ${
-                  pathname === child.href ? "font-semibold text-blue-600" : "text-gray-700"
-                }`}
-              >
-                {child.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Cases", href: "/cases" },
+  { label: "News", href: "/news" },
+  { label: "Careers", href: "/careers" },
+] as const;
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
+  const locale = useLocale();
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
+  const isLinkActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
 
-  const items = navConfig.links as NavItem[];
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white">
       <Container>
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+        <div className="flex h-16 items-center justify-between gap-4">
           <Link
             href="/"
+            locale={locale}
             className="text-xl font-bold text-gray-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 rounded"
           >
-            {siteConfig.name}
+            Nililia
           </Link>
 
-          {/* Desktop nav */}
-          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6">
-            {items.map((item) => {
-              if (item.children) {
-                return (
-                  <DropdownMenu
-                    key={item.label}
-                    item={item as NavItem & { children: { label: string; href: string }[] }}
-                  />
-                );
-              }
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href!}
-                  className={`text-sm font-medium px-1 py-2 rounded transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 ${
-                    pathname === item.href
-                      ? "text-blue-600 font-semibold"
-                      : "text-gray-700 hover:text-gray-900"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-5">
+            {navLinks.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                locale={locale}
+                className={`text-sm font-medium px-1 py-2 rounded transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 ${
+                  isLinkActive(item.href) ? "text-blue-600 font-semibold" : "text-gray-700 hover:text-gray-900"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-          {/* Mobile hamburger */}
+          <div className="hidden md:flex items-center gap-2">
+            <LanguageDropdown />
+            <Button href="/contact" variant="primary" className="px-4 py-2">
+              Contact
+            </Button>
+            <a
+              href="/company-profile.pdf"
+              download
+              className="inline-flex items-center justify-center rounded-md border border-blue-600 px-4 py-2 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
+            >
+              Company Profile
+            </a>
+          </div>
+
           <button
             type="button"
             aria-controls="mobile-menu"
             aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((v) => !v)}
+            onClick={() => setMobileOpen((value) => !value)}
             className="inline-flex md:hidden items-center justify-center rounded-md p-2 text-gray-600 hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600"
           >
             <span className="sr-only">{mobileOpen ? "Close menu" : "Open menu"}</span>
@@ -217,36 +91,40 @@ export default function Header() {
         </div>
       </Container>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div id="mobile-menu" className="md:hidden border-t border-gray-100">
           <Container>
-            <nav aria-label="Mobile navigation" className="py-4 space-y-1">
-              {items.map((item) => {
-                if (item.children) {
-                  return (
-                    <DropdownMenu
-                      key={item.label}
-                      item={item as NavItem & { children: { label: string; href: string }[] }}
-                      isMobile
-                    />
-                  );
-                }
-                return (
+            <div className="py-4 space-y-3">
+              <nav aria-label="Mobile navigation" className="space-y-1">
+                {navLinks.map((item) => (
                   <Link
                     key={item.href}
-                    href={item.href!}
+                    href={item.href}
+                    locale={locale}
+                    onClick={() => setMobileOpen(false)}
                     className={`block py-2 text-base font-medium ${
-                      pathname === item.href
-                        ? "text-blue-600 font-semibold"
-                        : "text-gray-700 hover:text-gray-900"
+                      isLinkActive(item.href) ? "text-blue-600 font-semibold" : "text-gray-700 hover:text-gray-900"
                     }`}
                   >
                     {item.label}
                   </Link>
-                );
-              })}
-            </nav>
+                ))}
+              </nav>
+
+              <div className="flex flex-col gap-2 pt-2">
+                <LanguageDropdown />
+                <Button href="/contact" variant="primary" className="w-full" onClick={() => setMobileOpen(false)}>
+                  Contact
+                </Button>
+                <a
+                  href="/company-profile.pdf"
+                  download
+                  className="inline-flex w-full items-center justify-center rounded-md border border-blue-600 px-5 py-2.5 text-sm font-semibold text-blue-600 transition-colors hover:bg-blue-50"
+                >
+                  Company Profile
+                </a>
+              </div>
+            </div>
           </Container>
         </div>
       )}

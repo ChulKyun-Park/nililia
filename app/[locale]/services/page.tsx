@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import PageHero from "@/components/ui/PageHero";
 import { serviceContent } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -9,27 +10,24 @@ export const metadata: Metadata = {
   description: serviceContent.hero.body,
 };
 
-export default function ServicePage() {
+export default function ServicesPage() {
   const { hero, products, localization } = serviceContent;
 
   return (
     <>
       {/* A) Hero */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            {hero.heading}
-          </h1>
-          <p className="mt-6 text-lg text-blue-100 max-w-2xl">
-            {hero.body}
-          </p>
-          <div className="mt-10">
-            <Button href={hero.cta.href} variant="secondary">
-              {hero.cta.label}
-            </Button>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title={hero.heading}
+        description={hero.body}
+        className="bg-gradient-to-br from-blue-900 to-blue-700 text-white"
+        descriptionClassName="text-blue-100"
+        containerClassName="max-w-3xl"
+        titleClassName="text-white"
+      >
+        <Button href={hero.cta.href} variant="secondary">
+          {hero.cta.label}
+        </Button>
+      </PageHero>
 
       {/* B) Our Products */}
       <Section>

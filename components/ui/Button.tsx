@@ -11,6 +11,8 @@ interface ButtonProps {
   className?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  target?: "_blank" | "_self" | "_parent" | "_top";
+  rel?: string;
 }
 
 const variantClasses: Record<Variant, string> = {
@@ -33,12 +35,14 @@ export default function Button({
   className = "",
   type = "button",
   disabled = false,
+  target,
+  rel,
 }: ButtonProps) {
   const classes = `${base} ${variantClasses[variant]} ${className}`;
 
   if (href) {
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} target={target} rel={rel}>
         {children}
       </Link>
     );

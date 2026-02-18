@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import PageHero from "@/components/ui/PageHero";
 import { homeContent, siteConfig } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -16,21 +16,18 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-blue-900 to-blue-700 text-white py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-            {hero.heading}
-          </h1>
-          <p className="mt-6 text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto">
-            {hero.subheading}
-          </p>
-          <div className="mt-10">
-            <Button href={hero.cta.href} variant="secondary">
-              {hero.cta.label}
-            </Button>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title={hero.heading}
+        description={hero.subheading}
+        className="bg-gradient-to-br from-blue-900 to-blue-700 text-white"
+        containerClassName="text-center"
+        descriptionClassName="text-blue-100 mx-auto"
+        titleClassName="text-white lg:text-6xl"
+      >
+        <Button href={hero.cta.href} variant="secondary">
+          {hero.cta.label}
+        </Button>
+      </PageHero>
 
       {/* Features */}
       <Section>
@@ -55,7 +52,7 @@ export default function HomePage() {
             Explore our services or read about how we have helped other businesses.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/service">Our Service</Button>
+            <Button href="/services">Our Service</Button>
             <Button href="/news/stories" variant="outline">Customer Stories</Button>
           </div>
         </div>
