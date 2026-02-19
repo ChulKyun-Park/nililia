@@ -17,11 +17,11 @@ interface ButtonProps {
 
 const variantClasses: Record<Variant, string> = {
   primary:
-    "bg-blue-600 text-white hover:bg-blue-700 focus-visible:outline-blue-600",
+    "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-primary",
   secondary:
     "bg-gray-100 text-gray-900 hover:bg-gray-200 focus-visible:outline-gray-400",
   outline:
-    "border border-blue-600 text-blue-600 hover:bg-blue-50 focus-visible:outline-blue-600",
+    "border border-primary text-primary hover:bg-primary/5 focus-visible:outline-primary",
 };
 
 const base =

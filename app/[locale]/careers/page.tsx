@@ -40,7 +40,7 @@ export default function CareersPage() {
             <h3 className="text-xl font-semibold text-gray-900">정규직 채용</h3>
             <p className="mt-3 text-gray-600">닐리리아의 글로벌화에 합류하세요.</p>
             <div className="mt-6">
-              <Button href="https://nililia.ninehire.site/" target="_blank" rel="noopener noreferrer">
+              <Button href="https://nililia.ninehire.site/" target="_blank" rel="noopener noreferrer" className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/90">
                 지금 지원하기
               </Button>
             </div>
@@ -50,7 +50,7 @@ export default function CareersPage() {
             <h3 className="text-xl font-semibold text-gray-900">프리랜서 채용</h3>
             <p className="mt-3 text-gray-600">글로벌 프로젝트에 참여해 보세요.</p>
             <div className="mt-6">
-              <Button href="/careers/freelance-pilot">지금 지원하기</Button>
+              <Button href="/careers/freelance-pilot" className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/90">지금 지원하기</Button>
             </div>
           </Card>
         </div>

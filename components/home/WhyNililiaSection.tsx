@@ -2,7 +2,17 @@
 
 import { useState, useEffect, useRef } from "react";
 
-export default function WhyNililiaSection() {
+interface WhyItem {
+  title: string;
+  description: string;
+}
+
+interface WhyNililiaSectionProps {
+  title: string;
+  items: WhyItem[];
+}
+
+export default function WhyNililiaSection({ title, items }: WhyNililiaSectionProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(true);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -10,22 +20,22 @@ export default function WhyNililiaSection() {
   const reasons = [
     {
       number: '01',
-      title: '압도적인 기술력으로',
-      description: '닐리리아의 독자 기술은 단순히 번역을 효율화 하는 것에서 그치지 않습니다. 일하는 방식 전체를 혁신합니다.',
+      title: items[0]?.title ?? '압도적인 기술력으로',
+      description: items[0]?.description ?? '닐리리아의 독자 기술은 단순히 번역을 효율화 하는 것에서 그치지 않습니다. 일하는 방식 전체를 혁신합니다.',
       image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
       tags: ['표준·자동화된 워크플로', '생산율을 높이는 에디터', '자동화 품질 관리']
     },
     {
       number: '02',
-      title: '콘텐츠 세계화 과정 전반 지원',
-      description: '번역, 자막 처리, 더빙 등 현지화 전 과정을 지원합니다. 더 적은 리소스로 더 많은 콘텐츠를 세계화해 보세요.',
+      title: items[1]?.title ?? '콘텐츠 세계화 과정 전반 지원',
+      description: items[1]?.description ?? '번역, 자막 처리, 더빙 등 현지화 전 과정을 지원합니다. 더 적은 리소스로 더 많은 콘텐츠를 세계화해 보세요.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
       tags: ['웹툰 디자인', '영상 디자인', '보이스오버 / 더빙']
     },
     {
       number: '03',
-      title: '원스톱으로 손쉬운 콘텐츠 유통',
-      description: '작품 선정부터 라이선싱 협상, 수익 정산까지 전 과정을 지원하는 닐리리아는 믿을 수 있는 유통 파트너입니다.',
+      title: items[2]?.title ?? '원스톱으로 손쉬운 콘텐츠 유통',
+      description: items[2]?.description ?? '작품 선정부터 라이선싱 협상, 수익 정산까지 전 과정을 지원하는 닐리리아는 믿을 수 있는 유통 파트너입니다.',
       image: 'https://images.unsplash.com/photo-1551288049-bbbda536ad37?auto=format&fit=crop&q=80&w=800',
       tags: ['번거로움 없는 수출', '수준 높은 번역·현지화']
     }
@@ -68,7 +78,7 @@ export default function WhyNililiaSection() {
         <div className="relative min-h-[600px] flex flex-col justify-center">
           {/* 상단 레이블은 고정 */}
           <div className="absolute top-0 left-0 w-full z-10 border-b border-gray-50 pb-4">
-            <span className="text-blue-600 font-bold text-2xl tracking-tight">Why Nililia</span>
+            <span className="text-primary font-bold text-2xl tracking-tight">{title}</span>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mt-20">

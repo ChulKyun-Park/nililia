@@ -3,7 +3,17 @@
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
-export default function ServicesPreviewSection() {
+interface ServicePreviewItem {
+  title: string;
+  description: string;
+}
+
+interface ServicesPreviewSectionProps {
+  title: string;
+  items: ServicePreviewItem[];
+}
+
+export default function ServicesPreviewSection({ title, items }: ServicesPreviewSectionProps) {
   const businessCards = [
     {
       title: '영상 번역',
@@ -57,10 +67,7 @@ export default function ServicesPreviewSection() {
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 text-sm font-bold rounded-xl mb-6 uppercase tracking-wider">
             Our Business
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-[1.4] break-keep">
-            닐리리아의<br />
-            콘텐츠 글로벌라이제이션 서비스
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-[1.4] break-keep">{title}</h2>
           <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed break-keep">
             콘텐츠 분석에 따른 맞춤형 자막 제작·번역부터 후처리까지<br />
             글로벌 확장을 위한 모든 현지화 과정을 지원합니다
@@ -76,7 +83,9 @@ export default function ServicesPreviewSection() {
 
         {/* 6단 카드 그리드 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-          {businessCards.map((card, index) => (
+          {businessCards.map((card, index) => {
+            const item = items[index];
+            return (
             <Link
               key={index}
               href={card.link}
@@ -86,7 +95,7 @@ export default function ServicesPreviewSection() {
               <div className="relative h-56 overflow-hidden bg-gray-100">
                 <img
                   src={card.image}
-                  alt={card.title}
+                  alt={item?.title ?? card.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
@@ -102,14 +111,15 @@ export default function ServicesPreviewSection() {
                   {card.subtitle}
                 </span>
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
-                  {card.title}
+                  {item?.title ?? card.title}
                 </h3>
                 <p className="text-[15px] text-gray-500 leading-relaxed break-keep">
-                  {card.description}
+                  {item?.description ?? card.description}
                 </p>
               </div>
             </Link>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

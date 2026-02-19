@@ -1,12 +1,13 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+interface SocialProofSectionProps {
+  title: string;
+  logos?: string[];
+}
 
-export default function SocialProofSection({ title }: { title: string }) {
-  const t = useTranslations("Home");
-
+export default function SocialProofSection({ title, logos = [] }: SocialProofSectionProps) {
   // 1. 컴퍼니 데이터 20개 생성 (A Company ~ T Company)
-  const companies = Array.from({ length: 20 }, (_, i) => `${String.fromCharCode(65 + i)} Company`);
+  const companies = logos.length ? logos : Array.from({ length: 20 }, (_, i) => `${String.fromCharCode(65 + i)} Company`);
   
   // 2. 채널 데이터 20개 생성 (Channel 1 ~ Channel 20)
   const creators = Array.from({ length: 20 }, (_, i) => `Channel ${i + 1}`);

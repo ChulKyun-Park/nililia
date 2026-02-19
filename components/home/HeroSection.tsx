@@ -47,10 +47,10 @@ export default function HeroSection({
             </p>
             
             <div className="mt-12 flex flex-wrap gap-4">
-              <Link href={primaryHref} className="rounded-xl bg-blue-600 px-8 py-4 text-white font-bold shadow-lg hover:bg-blue-700 transition-all active:scale-95">
+              <Link href={primaryHref} className="rounded-xl bg-primary px-8 py-4 text-primary-foreground font-bold shadow-lg hover:bg-primary/90 transition-all active:scale-95">
                 {primaryCtaLabel}
               </Link>
-              <Link href={secondaryHref} className="rounded-xl border border-blue-200 bg-white px-8 py-4 font-bold text-blue-600 hover:bg-blue-50 transition-all active:scale-95">
+              <Link href={secondaryHref} className="rounded-xl border border-primary/20 bg-white px-8 py-4 font-bold text-primary hover:bg-primary/5 transition-all active:scale-95">
                 {secondaryCtaLabel}
               </Link>
             </div>
@@ -58,7 +58,7 @@ export default function HeroSection({
             <div className="mt-20 flex gap-12 border-t border-slate-100 pt-10">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-3xl font-black text-blue-600 tracking-tight">{stat.value}</p>
+                  <p className="text-3xl font-black text-primary tracking-tight">{stat.value}</p>
                   <p className="text-sm font-bold text-slate-400 mt-2 uppercase tracking-wider">{stat.label}</p>
                 </div>
               ))}
@@ -88,7 +88,7 @@ export default function HeroSection({
 function ServiceCard({ icon, title, desc }: { icon: string; title: string; desc: string }) {
   return (
     <div className="bg-[#F8FAFC] rounded-[32px] p-8 flex flex-col justify-center items-start border border-slate-50 transition-transform hover:scale-[1.02]">
-      <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-5 shadow-blue-200 shadow-xl text-xl">{icon}</div>
+      <div className="w-12 h-12 bg-primary rounded-2xl flex items-center justify-center text-primary-foreground mb-5 shadow-blue-200 shadow-xl text-xl">{icon}</div>
       <p className="font-bold text-slate-900 text-xl">{title}</p>
       <p className="text-sm text-slate-500 mt-2 leading-normal">{desc}</p>
     </div>
