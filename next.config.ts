@@ -1,16 +1,14 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 필요한 설정(이미지 도메인 등)이 있다면 여기에 추가하세요.
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "secure.notion-static.com" },
+      { protocol: "https", hostname: "prod-files-secure.s3.us-west-2.amazonaws.com" },
     ],
   },
 };

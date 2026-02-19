@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Section from "@/components/ui/Section";
+import NotionThumbnail from "@/components/notion/NotionThumbnail";
 import { fetchCaseBySlug } from "@/lib/notion";
 import type { NotionContentBlock } from "@/lib/notion/types";
 
@@ -131,20 +131,19 @@ export default async function LocalizedCaseDetailPage({
   }
 
   return (
-    <Section>
+    <Section spacing="tight">
       <article className="mx-auto max-w-3xl">
         <header>
           <p className="text-sm text-gray-500">{new Date(item.publishedAt).toLocaleDateString()}</p>
           <h1 className="mt-2 text-4xl font-bold text-gray-900">{item.title}</h1>
           <p className="mt-4 text-gray-600">{item.description}</p>
           {item.thumbnail ? (
-            <Image
+            <NotionThumbnail
               src={item.thumbnail}
               alt={item.title}
               width={1200}
               height={675}
-              unoptimized
-              className="mt-8 h-auto w-full rounded-xl border border-gray-200"
+              className="mt-8 h-auto w-full rounded-[32px] border border-gray-200"
             />
           ) : null}
         </header>

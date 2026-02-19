@@ -18,7 +18,8 @@ export const metadata: Metadata = {
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = await getTranslations("Home");
+  const homeTranslationLocale = ["en", "ko"].includes(locale) ? locale : "en";
+  const t = await getTranslations({ locale: homeTranslationLocale, namespace: "Home" });
 
   let latestCases: Awaited<ReturnType<typeof fetchCaseList>> = [];
   let caseFetchFallback = "";
