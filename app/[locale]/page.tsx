@@ -31,6 +31,21 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
+      {/* 최적화된 애니메이션 스타일 정의 */}
+      <style>{`
+        @keyframes home-marquee-left {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(-50%, 0, 0); }
+        }
+        @keyframes home-marquee-right {
+          0% { transform: translate3d(-50%, 0, 0); }
+          100% { transform: translate3d(0, 0, 0); }
+        }
+        .animate-marquee {
+          will-change: transform;
+        }
+      `}</style>
+
       <HeroSection
         title={t("hero.title")}
         description={t("hero.description")}
@@ -48,14 +63,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <SocialProofSection
         title={t("socialProof.title")}
         logos={[
-          "client 01",
-          "client 02",
-          "client 03",
-          "client 04",
-          "client 05",
-          "client 06",
-          "client 07",
-          "client 08",
+          "client 01", "client 02", "client 03", "client 04",
+          "client 05", "client 06", "client 07", "client 08",
         ]}
       />
 
