@@ -7,10 +7,13 @@ type NotionRequestInit = {
 };
 
 function getNotionToken(): string {
-  const token = process.env.NOTION_API_KEY;
+  const token = process.env.NOTION_API_KEY?.trim();
+  console.log("DEBUG: Notion Token detected:", !!token);
+
   if (!token) {
     throw new Error("NOTION_API_KEY is not configured");
   }
+
   return token;
 }
 
