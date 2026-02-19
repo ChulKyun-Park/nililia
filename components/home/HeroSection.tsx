@@ -33,15 +33,11 @@ export default function HeroSection({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          {/* 좌측 텍스트 영역 */}
           <div className="lg:col-span-6 z-10">
-            {/* 1. 메인 타이틀 줄간격 대폭 수정 (leading-[1.6]) */}
             <h1 className="text-4xl font-bold leading-[1.6] text-gray-900 sm:text-6xl break-keep whitespace-pre-line">
-              {/* 타이틀 글씨가 위아래로 넉넉하게 배치되도록 1.6 수치를 부여했습니다. */}
               {title}
             </h1>
 
-            {/* 2. 설명 문구 줄간격 (기존 대비 소폭 조정) */}
             <p className="mt-10 text-lg text-gray-500 leading-[1.8] break-keep max-w-xl">
               {description}
             </p>
