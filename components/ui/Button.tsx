@@ -19,7 +19,7 @@ const variantClasses: Record<Variant, string> = {
   primary:
     "bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:outline-primary",
   secondary:
-    "bg-gray-100 text-gray-900 hover:bg-gray-200 focus-visible:outline-gray-400",
+    "bg-primary/5 text-gray-900 hover:bg-primary/10 focus-visible:outline-primary",
   outline:
     "border border-primary text-primary hover:bg-primary/5 focus-visible:outline-primary",
 };

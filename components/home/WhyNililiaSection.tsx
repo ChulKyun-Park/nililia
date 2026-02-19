@@ -77,7 +77,7 @@ export default function WhyNililiaSection({ title, items }: WhyNililiaSectionPro
         
         <div className="relative min-h-[600px] flex flex-col justify-center">
           {/* 상단 레이블은 고정 */}
-          <div className="absolute top-0 left-0 w-full z-10 border-b border-gray-50 pb-4">
+          <div className="absolute top-0 left-0 w-full z-10 border-b border-primary/10 pb-4">
             <span className="text-primary font-bold text-2xl tracking-tight">{title}</span>
           </div>
 
@@ -92,18 +92,18 @@ export default function WhyNililiaSection({ title, items }: WhyNililiaSectionPro
                 {extendedReasons.map((reason, idx) => (
                   <div key={idx} className="h-[400px] flex flex-col justify-center">
                     {/* 숫자를 타이틀 바로 위로 배치하여 한 번에 같이 슬라이드되게 함 */}
-                    <div className="text-4xl font-black text-blue-600/20 mb-4">
+                    <div className="text-4xl font-black text-primary/20 mb-4">
                       {reason.number}
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-[1.2] break-keep">
                       {reason.title}
                     </h2>
-                    <p className="text-xl text-gray-600 mb-8 leading-relaxed break-keep">
+                    <p className="text-xl text-gray-500 mb-8 leading-relaxed break-keep">
                       {reason.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {reason.tags.map((tag) => (
-                        <span key={tag} className="px-4 py-2 bg-slate-50 rounded-lg text-xs font-bold text-slate-400 border border-slate-100">
+                        <span key={tag} className="px-4 py-2 bg-primary/5 rounded-lg text-xs font-bold text-gray-500 border border-primary/10">
                           {tag}
                         </span>
                       ))}
@@ -138,8 +138,8 @@ export default function WhyNililiaSection({ title, items }: WhyNililiaSectionPro
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      (activeIndex % reasons.length) === index ? "bg-blue-600" : "bg-slate-200 hover:bg-slate-300"
+                    className={`w-2.5 h-2.5 rounded-xl transition-all duration-300 ${
+                      (activeIndex % reasons.length) === index ? "bg-primary" : "bg-primary/20 hover:bg-primary/40"
                     }`}
                   />
                 ))}

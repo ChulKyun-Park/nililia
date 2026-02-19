@@ -32,9 +32,9 @@ export default function CoreValueSection({ title, values }: CoreValuesSectionPro
             {values.map((value, index) => (
               <div
                 key={value.title}
-                className="group w-full rounded-[24px] border border-gray-100 bg-white p-8 transition-all duration-300 hover:border-primary hover:shadow-[0_20px_40px_rgba(0,0,0,0.04)] md:w-[380px]"
+                className="group w-full rounded-xl border border-primary/10 bg-white p-8 transition-all duration-300 hover:border-primary hover:shadow-[0_20px_40px_rgba(0,0,0,0.04)] md:w-[380px]"
               >
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                   {value.icon ?? fallbackIcons[index % fallbackIcons.length]}
                 </div>
 

@@ -60,21 +60,21 @@ export default function ServicesPreviewSection({ title, items }: ServicesPreview
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-blue-50/30 to-white">
+    <section className="py-24 bg-gradient-to-b from-primary/5 to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* 헤더 영역 */}
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 text-sm font-bold rounded-xl mb-6 uppercase tracking-wider">
+          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary text-sm font-bold rounded-xl mb-6 uppercase tracking-wider">
             Our Business
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-[1.4] break-keep">{title}</h2>
-          <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed break-keep">
+          <p className="text-lg text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed break-keep">
             콘텐츠 분석에 따른 맞춤형 자막 제작·번역부터 후처리까지<br />
             글로벌 확장을 위한 모든 현지화 과정을 지원합니다
           </p>
           <Link 
             href="/services" 
-            className="inline-flex items-center bg-white border-2 border-blue-600 text-blue-600 px-7 py-3.5 rounded-xl font-bold hover:bg-blue-600 hover:text-white transition-all duration-200 shadow-sm hover:shadow-md"
+            className="inline-flex items-center bg-white border-2 border-primary text-primary px-7 py-3.5 rounded-xl font-bold hover:bg-primary hover:text-primary-foreground transition-all duration-200 shadow-sm hover:shadow-md"
           >
             비즈니스 전체 보기
             <ArrowRight className="ml-2 w-5 h-5" />
@@ -89,10 +89,10 @@ export default function ServicesPreviewSection({ title, items }: ServicesPreview
             <Link
               key={index}
               href={card.link}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-blue-200 w-full max-w-[380px]"
+              className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-primary/10 hover:border-primary/20 w-full max-w-[380px]"
             >
               {/* 이미지 영역 */}
-              <div className="relative h-56 overflow-hidden bg-gray-100">
+              <div className="relative h-56 overflow-hidden bg-primary/5">
                 <img
                   src={card.image}
                   alt={item?.title ?? card.title}
@@ -100,17 +100,17 @@ export default function ServicesPreviewSection({ title, items }: ServicesPreview
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60"></div>
                 {/* 호버 시 나타나는 화살표 */}
-                <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                  <ArrowUpRight className="text-blue-600 w-5 h-5" />
+                <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  <ArrowUpRight className="text-primary w-5 h-5" />
                 </div>
               </div>
               
               {/* 텍스트 내용 영역 */}
               <div className="p-7">
-                <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-3 block">
+                <span className="text-xs font-bold text-primary uppercase tracking-widest mb-3 block">
                   {card.subtitle}
                 </span>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary transition-colors">
                   {item?.title ?? card.title}
                 </h3>
                 <p className="text-[15px] text-gray-500 leading-relaxed break-keep">
