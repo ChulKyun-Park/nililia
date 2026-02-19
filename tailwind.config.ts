@@ -1,3 +1,4 @@
+import tailwindcssAnimate from "tailwindcss-animate";
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -12,6 +13,7 @@ const config: Config = {
         },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        'muted-foreground': 'hsl(var(--muted-foreground))',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -23,7 +25,7 @@ const config: Config = {
       },
     }
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 };
 
 export default config;

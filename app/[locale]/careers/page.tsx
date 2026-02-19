@@ -13,7 +13,7 @@ export default function CareersPage() {
     <>
       <Section>
         <div className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
+          <span className="inline-flex rounded-xl border border-primary/20 bg-primary/5 px-3 py-1 text-xs font-semibold text-primary">
             Career
           </span>
           <h1 className="mt-5 text-3xl font-bold leading-tight text-gray-900 sm:text-5xl">
@@ -25,7 +25,7 @@ export default function CareersPage() {
           </h1>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50">
+        <div className="mt-10 overflow-hidden rounded-xl border border-primary/10 bg-primary/5">
           <div className="flex h-[320px] items-center justify-center text-sm text-gray-500 sm:h-[460px]">
             Career hero image placeholder
           </div>
@@ -38,9 +38,9 @@ export default function CareersPage() {
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
           <Card>
             <h3 className="text-xl font-semibold text-gray-900">정규직 채용</h3>
-            <p className="mt-3 text-gray-600">닐리리아의 글로벌화에 합류하세요.</p>
+            <p className="mt-3 text-gray-500">닐리리아의 글로벌화에 합류하세요.</p>
             <div className="mt-6">
-              <Button href="https://nililia.ninehire.site/" target="_blank" rel="noopener noreferrer">
+              <Button href="https://nililia.ninehire.site/" target="_blank" rel="noopener noreferrer" className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/90">
                 지금 지원하기
               </Button>
             </div>
@@ -48,9 +48,9 @@ export default function CareersPage() {
 
           <Card>
             <h3 className="text-xl font-semibold text-gray-900">프리랜서 채용</h3>
-            <p className="mt-3 text-gray-600">글로벌 프로젝트에 참여해 보세요.</p>
+            <p className="mt-3 text-gray-500">글로벌 프로젝트에 참여해 보세요.</p>
             <div className="mt-6">
-              <Button href="/careers/freelance-pilot">지금 지원하기</Button>
+              <Button href="/careers/freelance-pilot" className="rounded-xl bg-primary text-primary-foreground hover:bg-primary/90">지금 지원하기</Button>
             </div>
           </Card>
         </div>

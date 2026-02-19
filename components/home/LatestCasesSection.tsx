@@ -19,11 +19,11 @@ export default function LatestCasesSection({
   fallbackLabel,
 }: LatestCasesSectionProps) {
   return (
-    <Section className="bg-gray-50">
+    <Section className="bg-primary/5">
       <h2 className="text-center text-2xl font-bold text-gray-900">{title}</h2>
 
       {!cases.length ? (
-        <p className="mt-8 text-center text-gray-600">{fallbackLabel || emptyLabel}</p>
+        <p className="mt-8 text-center text-gray-500">{fallbackLabel || emptyLabel}</p>
       ) : (
         <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
           {cases.map((item) => (
@@ -32,7 +32,7 @@ export default function LatestCasesSection({
                 <Card className="h-full">
                   <p className="text-xs text-gray-500">{new Date(item.publishedAt).toLocaleDateString()}</p>
                   <h3 className="mt-2 text-lg font-semibold text-gray-900">{item.title}</h3>
-                  <p className="mt-2 text-sm text-gray-600">{item.description}</p>
+                  <p className="mt-2 text-sm text-gray-500">{item.description}</p>
                 </Card>
               </Link>
             </li>
