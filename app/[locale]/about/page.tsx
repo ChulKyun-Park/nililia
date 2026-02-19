@@ -1,98 +1,102 @@
 import type { Metadata } from "next";
-import PageHero from "@/components/ui/PageHero";
-import Section from "@/components/ui/Section";
-import Card from "@/components/ui/Card";
-import Button from "@/components/ui/Button";
-import { aboutContent } from "@/lib/content";
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+import { Heart, Lightbulb, ShieldCheck, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: aboutContent.intro,
+  title: "About Nililia",
 };
 
-const principles = [
-  {
-    title: aboutContent.mission.heading,
-    body: aboutContent.mission.body,
-  },
-  {
-    title: "Our Vision",
-    body: "Become the default localization operations partner for enterprise organizations expanding internationally.",
-  },
-  {
-    title: "Our Values",
-    body: aboutContent.values.map((value) => value.title).join(" · "),
-  },
-];
+export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations("About");
 
-const differentiators = [
-  "Enterprise-ready governance with consistent terminology and review controls.",
-  "Scalable workflows for multi-market releases and high-volume content streams.",
-  "Specialist linguists paired with domain-aware QA and delivery operations.",
-  "Flexible collaboration model with clear SLAs and proactive communication.",
-];
+  // 타임라인 연도 설정 (ko.json의 키와 일치)
+  const journeyYears = ["2016", "2017", "2019", "2022", "2024"] as const;
 
-const snapshots = [
-  { label: "Languages Supported", value: "100+" },
-  { label: "Enterprise Programs", value: "250+" },
-  { label: "On-time Delivery", value: "99%" },
-  { label: "Client Retention", value: "95%" },
-];
-
-export default function AboutPage() {
   return (
-    <>
-      <PageHero title={aboutContent.heading} description={aboutContent.intro} />
-
-      <Section>
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">Mission · Vision · Values</h2>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {principles.map((item) => (
-            <Card key={item.title}>
-              <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600">{item.body}</p>
-            </Card>
-          ))}
+    <main className="flex flex-col w-full">
+      {/* 1. 상단 블루 배너 */}
+      <section className="bg-blue-600 py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-4 text-center">
+          <h1 className="text-2xl font-bold leading-tight text-white sm:text-4xl">
+            {t("hero.headline")}
+          </h1>
         </div>
-      </Section>
+      </section>
 
-      <Section className="bg-gray-50">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Why nililia</h2>
-        <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {differentiators.map((item) => (
-            <li key={item} className="rounded-lg border border-gray-200 bg-white px-5 py-4 text-sm text-gray-700">
-              {item}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <Section>
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">Company Snapshot</h2>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {snapshots.map((metric) => (
-            <Card key={metric.label}>
-              <p className="text-3xl font-bold text-gray-900">{metric.value}</p>
-              <p className="mt-2 text-xs uppercase tracking-wide text-gray-500">{metric.label}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      <Section className="bg-blue-50">
-        <div className="rounded-xl border border-blue-100 bg-white p-8">
-          <h2 className="text-2xl font-bold text-gray-900">Build your next global launch with nililia</h2>
-          <p className="mt-3 text-gray-600 max-w-2xl">
-            Share your objectives and target markets. We will propose the right delivery model for your team.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <Button href="/contact">Contact</Button>
-            <Button href="/company-profile.pdf" variant="outline">
-              Company Profile
-            </Button>
+      {/* 2. 미션 섹션 (이미지 + 텍스트) */}
+      <section className="py-16 sm:py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <span className="inline-flex rounded-full bg-blue-50 px-4 py-1 text-sm font-semibold text-blue-700">
+              {t("mission.tag")}
+            </span>
+            <h2 className="text-3xl font-bold text-slate-900 sm:text-4xl">{t("mission.title")}</h2>
+            <div className="space-y-4 text-lg text-slate-600">
+              <p>{t("mission.desc1")}</p>
+              <p>{t("mission.desc2")}</p>
+            </div>
+          </div>
+          <div className="relative h-[400px] overflow-hidden rounded-2xl shadow-xl">
+            <Image
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000"
+              alt="Mission Image"
+              fill
+              className="object-cover"
+            />
           </div>
         </div>
-      </Section>
-    </>
+      </section>
+
+      {/* 3. 핵심 가치 (2x2 그리드) */}
+      <section className="bg-slate-50 py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-slate-900">{t("values.title")}</h2>
+            <p className="mt-4 text-slate-500">{t("values.subtitle")}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <ValueCard icon={<Heart />} title={t("values.customer.title")} desc={t("values.customer.desc")} />
+            <ValueCard icon={<ShieldCheck />} title={t("values.quality.title")} desc={t("values.quality.desc")} />
+            <ValueCard icon={<Lightbulb />} title={t("values.innovation.title")} desc={t("values.innovation.desc")} />
+            <ValueCard icon={<Users />} title={t("values.collaboration.title")} desc={t("values.collaboration.desc")} />
+          </div>
+        </div>
+      </section>
+
+      {/* 4. 성장 여정 (타임라인) */}
+      <section className="py-16 sm:py-24 bg-white overflow-hidden">
+        <div className="mx-auto max-w-7xl px-4 relative">
+          <h2 className="text-3xl font-bold text-center mb-20">{t("journey.title")}</h2>
+          <div className="absolute left-1/2 top-40 h-[70%] w-0.5 bg-blue-100 hidden md:block" />
+          <div className="space-y-20">
+            {journeyYears.map((year, index) => (
+              <div key={year} className={`flex flex-col md:flex-row items-center justify-between w-full ${index % 2 !== 0 ? "md:flex-row-reverse" : ""}`}>
+                <div className="md:w-[45%] bg-white p-8 rounded-2xl shadow-md border border-slate-100">
+                  <span className="text-blue-600 font-black text-3xl">{year}</span>
+                  <h4 className="text-xl font-bold mt-2">{t(`journey.events.${year}.title`)}</h4>
+                  <p className="text-slate-500 mt-2">{t(`journey.events.${year}.desc`)}</p>
+                </div>
+                <div className="hidden md:block w-4 h-4 rounded-full bg-blue-600 border-4 border-white z-10 shadow-sm" />
+                <div className="md:w-[45%]" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+function ValueCard({ icon, title, desc }: { icon: React.ReactNode; title: string; desc: string }) {
+  return (
+    <div className="rounded-2xl bg-white p-8 shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+        {icon}
+      </div>
+      <h3 className="text-xl font-bold">{title}</h3>
+      <p className="mt-3 text-slate-600 text-sm leading-relaxed">{desc}</p>
+    </div>
   );
 }
