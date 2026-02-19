@@ -9,9 +9,39 @@ export const metadata: Metadata = {
   description: "Latest case studies.",
 };
 
-export default async function LocalizedCaseListPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
-  const items = await fetchCaseList(locale);
+export default async function LocalizedCaseListPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+
+  let items: Awaited<ReturnType<typeof fetchCaseList>> = [];
+  let hasFetchError = false;
+
+  try {
+    items = await fetchCaseList(locale);
+  } catch {
+    hasFetchError = true;
+  }
+
+  if (hasFetchError) {
+    return (
+      <Section>
+        <header className="mb-10">
+          <h1 className="text-3xl font-bold text-gray-900">Cases</h1>
+        </header>
+        <p className="text-gray-600">Check Connection</p>
+      </Section>
+    );
+  }
+
+  if (!items.length) {
+    return (
+      <Section>
+        <header className="mb-10">
+          <h1 className="text-3xl font-bold text-gray-900">Cases</h1>
+        </header>
+        <p className="text-gray-600">Coming Soon</p>
+      </Section>
+    );
+  }
 
   return (
     <Section>

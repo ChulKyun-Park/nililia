@@ -9,9 +9,39 @@ export const metadata: Metadata = {
   description: "Latest news updates.",
 };
 
-export default async function LocalizedNewsListPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
-  const items = await fetchNewsList(locale);
+export default async function LocalizedNewsListPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+
+  let items: Awaited<ReturnType<typeof fetchNewsList>> = [];
+  let hasFetchError = false;
+
+  try {
+    items = await fetchNewsList(locale);
+  } catch {
+    hasFetchError = true;
+  }
+
+  if (hasFetchError) {
+    return (
+      <Section>
+        <header className="mb-10">
+          <h1 className="text-3xl font-bold text-gray-900">News</h1>
+        </header>
+        <p className="text-gray-600">Check Connection</p>
+      </Section>
+    );
+  }
+
+  if (!items.length) {
+    return (
+      <Section>
+        <header className="mb-10">
+          <h1 className="text-3xl font-bold text-gray-900">News</h1>
+        </header>
+        <p className="text-gray-600">Coming Soon</p>
+      </Section>
+    );
+  }
 
   return (
     <Section>
