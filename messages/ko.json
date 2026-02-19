@@ -14,88 +14,38 @@
       "primaryCta": "문의하기",
       "secondaryCta": "견적 받기",
       "stats": {
-        "languages": {
-          "value": "10+",
-          "label": "지원 언어"
-        },
-        "customers": {
-          "value": "1,300+",
-          "label": "기업 고객"
-        },
-        "turnaround": {
-          "value": "24h",
-          "label": "평균 납기"
-        }
+        "languages": { "value": "10+", "label": "지원 언어" },
+        "customers": { "value": "1,300+", "label": "기업 고객" },
+        "turnaround": { "value": "24h", "label": "평균 납기" }
       }
     },
-    "socialProof": {
-      "title": "1,300여 이상의 기업이 닐리리아와 함께합니다"
-    },
+    "socialProof": { "title": "1,300여 이상의 기업이 닐리리아와 함께합니다" },
     "coreValues": {
       "title": "글로벌 콘텐츠의 새로운 기준",
       "items": {
-        "accuracy": {
-          "title": "정확도",
-          "description": "산업별 전문가의 다층 검수로 맥락까지 정확하게 전달합니다."
-        },
-        "speed": {
-          "title": "속도",
-          "description": "자동화 워크플로우와 전담 PM으로 프로젝트를 빠르게 완수합니다."
-        },
-        "security": {
-          "title": "보안",
-          "description": "엄격한 보안 프로토콜과 NDA 기반 운영으로 콘텐츠를 안전하게 보호합니다."
-        }
+        "accuracy": { "title": "정확도", "description": "산업별 전문가의 다층 검수로 맥락까지 정확하게 전달합니다." },
+        "speed": { "title": "속도", "description": "자동화 워크플로우와 전담 PM으로 프로젝트를 빠르게 완수합니다." },
+        "security": { "title": "보안", "description": "엄격한 보안 프로토콜과 NDA 기반 운영으로 콘텐츠를 안전하게 보호합니다." }
       }
     },
     "services": {
       "title": "닐리리아의 콘텐츠 글로벌라이제이션 서비스",
       "items": {
-        "video": {
-          "title": "영상 번역 · 자막",
-          "description": "OTT, 유튜브, 기업 홍보 영상까지 플랫폼 최적화 번역을 지원합니다."
-        },
-        "document": {
-          "title": "문서 번역",
-          "description": "기술 문서, 백서, 제안서 등 비즈니스 문서를 정밀하게 현지화합니다."
-        },
-        "webtoon": {
-          "title": "웹툰 · 스토리 현지화",
-          "description": "장르와 캐릭터 톤을 살리는 스토리텔링 중심 번역을 제공합니다."
-        },
-        "marketing": {
-          "title": "마케팅 카피",
-          "description": "브랜드 메시지를 시장별 문화 맥락에 맞게 재구성합니다."
-        },
-        "uiux": {
-          "title": "UI/UX 텍스트",
-          "description": "서비스 톤앤매너를 유지하며 제품 사용성을 높이는 마이크로카피를 설계합니다."
-        },
-        "localizationQa": {
-          "title": "LQA · 감수",
-          "description": "출시 전 언어 품질, 기능, 레이아웃까지 통합 점검합니다."
-        }
+        "video": { "title": "영상 번역 · 자막", "description": "OTT, 유튜브, 기업 홍보 영상까지 플랫폼 최적화 번역을 지원합니다." },
+        "document": { "title": "문서 번역", "description": "기술 문서, 백서, 제안서 등 비즈니스 문서를 정밀하게 현지화합니다." },
+        "webtoon": { "title": "웹툰 · 스토리 현지화", "description": "장르와 캐릭터 톤을 살리는 스토리텔링 중심 번역을 제공합니다." },
+        "marketing": { "title": "마케팅 카피", "description": "브랜드 메시지를 시장별 문화 맥락에 맞게 재구성합니다." },
+        "uiux": { "title": "UI/UX 텍스트", "description": "서비스 톤앤매너를 유지하며 제품 사용성을 높이는 마이크로카피를 설계합니다." },
+        "localizationQa": { "title": "LQA · 감수", "description": "출시 전 언어 품질, 기능, 레이아웃까지 통합 점검합니다." }
       }
     },
     "whyNililia": {
       "title": "왜 닐리리아일까요?",
       "items": {
-        "technicalExpertise": {
-          "title": "Technical Expertise",
-          "description": "도메인별 전문 번역가와 언어 엔지니어가 기술 정확도를 보장합니다."
-        },
-        "oneStopProcess": {
-          "title": "One-stop Process",
-          "description": "상담부터 납품까지 하나의 파이프라인으로 운영되어 커뮤니케이션 비용을 줄입니다."
-        },
-        "domainSpecialists": {
-          "title": "Domain Specialists",
-          "description": "미디어, IT, 게임, 교육 등 산업 맞춤 팀이 프로젝트별 최적 해법을 제시합니다."
-        },
-        "scalableOperations": {
-          "title": "Scalable Operations",
-          "description": "대량 콘텐츠도 일정과 품질을 유지하는 확장형 운영 체계를 제공합니다."
-        }
+        "technicalExpertise": { "title": "Technical Expertise", "description": "도메인별 전문 번역가와 언어 엔지니어가 기술 정확도를 보장합니다." },
+        "oneStopProcess": { "title": "One-stop Process", "description": "상담부터 납품까지 하나의 파이프라인으로 운영되어 커뮤니케이션 비용을 줄입니다." },
+        "domainSpecialists": { "title": "Domain Specialists", "description": "미디어, IT, 게임, 교육 등 산업 맞춤 팀이 프로젝트별 최적 해법을 제시합니다." },
+        "scalableOperations": { "title": "Scalable Operations", "description": "대량 콘텐츠도 일정과 품질을 유지하는 확장형 운영 체계를 제공합니다." }
       }
     },
     "cases": {
@@ -106,28 +56,52 @@
     "faq": {
       "title": "자주 묻는 질문",
       "items": {
-        "q1": {
-          "question": "프로젝트는 얼마나 빨리 시작할 수 있나요?",
-          "answer": "요구사항 확인 후 평균 24시간 이내에 견적과 일정 제안을 드립니다."
-        },
-        "q2": {
-          "question": "어떤 파일 형식을 지원하나요?",
-          "answer": "DOCX, PPTX, SRT, JSON, XLIFF 등 다양한 파일 형식을 지원합니다."
-        },
-        "q3": {
-          "question": "보안이 중요한 자료도 맡길 수 있나요?",
-          "answer": "NDA 체결 및 접근 권한 통제를 기본으로 운영하며, 민감 자료도 안전하게 처리합니다."
-        },
-        "q4": {
-          "question": "샘플 번역을 먼저 받아볼 수 있나요?",
-          "answer": "네, 프로젝트 규모와 도메인에 따라 샘플 번역 제공이 가능합니다."
-        }
+        "q1": { "question": "프로젝트는 얼마나 빨리 시작할 수 있나요?", "answer": "요구사항 확인 후 평균 24시간 이내에 견적과 일정 제안을 드립니다." },
+        "q2": { "question": "어떤 파일 형식을 지원하나요?", "answer": "DOCX, PPTX, SRT, JSON, XLIFF 등 다양한 파일 형식을 지원합니다." },
+        "q3": { "question": "보안이 중요한 자료도 맡길 수 있나요?", "answer": "NDA 체결 및 접근 권한 통제를 기본으로 운영하며, 민감 자료도 안전하게 처리합니다." },
+        "q4": { "question": "샘플 번역을 먼저 받아볼 수 있나요?", "answer": "네, 프로젝트 규모와 도메인에 따라 샘플 번역 제공이 가능합니다." }
       }
     },
     "bottomCta": {
       "title": "글로벌 시장으로의 첫 걸음, 지금 시작하세요",
       "primaryCta": "문의하기",
       "secondaryCta": "서비스 보기"
+    }
+  },
+  "About": {
+    "hero": {
+      "headline": "닐리리아는 글로벌 콘텐츠 현지화를 선도하는 AI 기반 번역 및 현지화 전문 기업입니다."
+    },
+    "mission": {
+      "tag": "Our Mission",
+      "title": "언어의 경계를 넘어 세계를 연결합니다",
+      "desc1": "닐리리아는 단순한 번역을 넘어, 문화적 맥락을 이해하고 기술의 혁신을 통해 전 세계가 실시간으로 소통할 수 있는 세상을 꿈꿉니다.",
+      "desc2": "최첨단 AI 기술과 전문 번역가 집단의 협업을 통해 가장 정확하고 자연스러운 현지화 솔루션을 제공하겠습니다."
+    },
+    "values": {
+      "tag": "Core Values",
+      "title": "우리의 핵심 가치",
+      "subtitle": "우리가 일하는 방식과 지향하는 목표의 근간입니다.",
+      "customer": { "title": "고객 중심", "desc": "고객의 성공이 곧 우리의 성공입니다." },
+      "quality": { "title": "품질 보증", "desc": "타협하지 않는 품질 기준을 고수합니다." },
+      "innovation": { "title": "혁신 추구", "desc": "AI 기술로 기존의 한계를 극복합니다." },
+      "collaboration": { "title": "협업 문화", "desc": "함께 더 큰 가치를 창출합니다." }
+    },
+    "journey": {
+      "tag": "Our Journey",
+      "title": "성장의 여정",
+      "events": {
+        "2016": { "title": "회사 설립", "desc": "전문 번역가 네트워크 기반 서비스 시작" },
+        "2017": { "title": "사업 확장", "desc": "글로벌 대기업 B2B 파트너십 구축" },
+        "2019": { "title": "기술 혁신", "desc": "자체 AI TMS 개발 및 상용화" },
+        "2022": { "title": "글로벌 진출", "desc": "북미/아시아 지사 설립" },
+        "2024": { "title": "업계 선도", "desc": "AI 자동 번역 모델 고도화" }
+      }
+    },
+    "cta": {
+      "title": "함께 성장할 인재를 찾습니다",
+      "subtitle": "닐리리아의 미래를 함께 만들어갈 열정적인 동료를 기다립니다.",
+      "button": "채용 공고 보기 ->"
     }
   }
 }
