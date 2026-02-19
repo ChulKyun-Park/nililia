@@ -3,6 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { Check, ArrowRight, ChevronRight, ArrowUpRight } from "lucide-react";
 import Container from "@/components/ui/Container";
+import { UNSPLASH_IMAGES } from "@/lib/imageMap";
 
 // 이미지 경로 설정
 const contentsflyImg = "/images/contentsfly.png";
@@ -16,7 +17,7 @@ export default function ServicesPage() {
       subtitle: '자막 & 번역',
       description: '영상 콘텐츠의 자막 제작과 번역을 통해\n글로벌 시청자와 소통합니다.',
       features: ['자막 제작', '타임코드 동기화', '다국어 번역'],
-      image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=500&h=400&fit=crop',
+      image: UNSPLASH_IMAGES.servicesVideoCard,
     },
     {
       title: '문서 번역',
@@ -24,7 +25,7 @@ export default function ServicesPage() {
       subtitle: '전문 번역',
       description: '기술 문서, 카탈로그, 매뉴얼 등\n다양한 문서를 정확하게 번역합니다.',
       features: ['기술 문서', '카탈로그', '매뉴얼'],
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&h=400&fit=crop',
+      image: UNSPLASH_IMAGES.servicesDocumentCard,
     },
     {
       title: '홈페이지·앱 현지화',
@@ -32,7 +33,7 @@ export default function ServicesPage() {
       subtitle: '디지털 최적화',
       description: '웹사이트와 모바일 앱의 UI/UX를 고려한\n현지화 서비스를 제공합니다.',
       features: ['UI/UX 번역', '다국어 지원', '반응형 대응'],
-      image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=500&h=400&fit=crop',
+      image: UNSPLASH_IMAGES.servicesWebappCard,
     },
     {
       title: '게임 번역',
@@ -40,7 +41,7 @@ export default function ServicesPage() {
       subtitle: '콘텐츠 현지화',
       description: '게임의 스토리, UI, 대사를\n현지 문화에 맞게 번역합니다.',
       features: ['스토리·대사 번역', 'UI 현지화', 'LQA 테스트'],
-      image: 'https://images.unsplash.com/photo-1552820728-8b83bb6b773f?w=500&h=400&fit=crop',
+      image: UNSPLASH_IMAGES.servicesGameCard,
     },
     {
       title: '웹소설·웹툰 현지화',
@@ -48,7 +49,7 @@ export default function ServicesPage() {
       subtitle: '콘텐츠 현지화',
       description: '웹소설과 웹툰의 스토리를\n현지 독자에게 자연스럽게 전달합니다.',
       features: ['말풍선 편집', '문화적 적응', '연재 관리'],
-      image: 'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=500&h=400&fit=crop',
+      image: UNSPLASH_IMAGES.servicesWebfictionCard,
     },
     {
       title: 'SDH·배리어프리 자막',
@@ -56,7 +57,7 @@ export default function ServicesPage() {
       subtitle: '접근성 향상',
       description: '모든 사람들을 위한 접근성 자막과\n음향 효과 설명을 제공합니다.',
       features: ['음향 효과 표기', '화자 구분', '접근성 준수'],
-      image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500&h=400&fit=crop',
+      image: UNSPLASH_IMAGES.servicesSdhCard,
     },
   ];
 

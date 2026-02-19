@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
@@ -11,18 +11,19 @@ import { Home } from "lucide-react";
 
 // ⭐ 핵심 수정: 모든 객체가 동일한 구조를 갖도록 'isHome'을 명시적으로 추가 ⭐
 const navLinks = [
-  { label: "Home", href: "/", isHome: true },
-  { label: "회사소개", href: "/about", isHome: false },
-  { label: "서비스", href: "/services", isHome: false },
-  { label: "고객사례", href: "/cases", isHome: false },
-  { label: "소식", href: "/news", isHome: false },
-  { label: "채용", href: "/careers", isHome: false },
+  { key: "home", href: "/", isHome: true },
+  { key: "about", href: "/about", isHome: false },
+  { key: "services", href: "/services", isHome: false },
+  { key: "cases", href: "/cases", isHome: false },
+  { key: "news", href: "/news", isHome: false },
+  { key: "careers", href: "/careers", isHome: false },
 ] as const;
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
   const locale = useLocale();
+  const tCommon = useTranslations("common");
 
   const isLinkActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -59,7 +60,7 @@ export default function Header() {
                 {item.isHome ? (
                   <Home className="w-5 h-5" />
                 ) : (
-                  item.label
+                  tCommon(item.key)
                 )}
               </Link>
             ))}
@@ -115,7 +116,7 @@ export default function Header() {
                     )}
                   >
                     {item.isHome && <Home className="w-6 h-6" />}
-                    {item.label}
+                    {tCommon(item.key)}
                   </Link>
                 ))}
               </nav>

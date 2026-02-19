@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Container from "@/components/ui/Container";
 
 interface HeroSectionProps {
   title: string;
@@ -30,7 +31,7 @@ export default function HeroSection({
         }
       `}</style>
       
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
           <div className="lg:col-span-6 z-10">
@@ -76,7 +77,7 @@ export default function HeroSection({
           </div>
 
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
