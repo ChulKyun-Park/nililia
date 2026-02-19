@@ -1,62 +1,144 @@
 import type { Metadata } from "next";
-import Section from "@/components/ui/Section";
-import Button from "@/components/ui/Button";
-import Card from "@/components/ui/Card";
-import PageHero from "@/components/ui/PageHero";
-import { homeContent, siteConfig } from "@/lib/content";
+import { getTranslations } from "next-intl/server";
+import HeroSection from "@/components/home/HeroSection";
+import SocialProofSection from "@/components/home/SocialProofSection";
+import CoreValuesSection from "@/components/home/CoreValuesSection";
+import ServicesPreviewSection from "@/components/home/ServicesPreviewSection";
+import WhyNililiaSection from "@/components/home/WhyNililiaSection";
+import LatestCasesSection from "@/components/home/LatestCasesSection";
+import FaqSection from "@/components/home/FaqSection";
+import BottomCtaSection from "@/components/home/BottomCtaSection";
+import { siteConfig } from "@/lib/content";
+import { fetchCaseList } from "@/lib/notion";
 
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
 };
 
-export default function HomePage() {
-  const { hero, features } = homeContent;
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations("Home");
+
+  let latestCases: Awaited<ReturnType<typeof fetchCaseList>> = [];
+  let caseFetchFallback = "";
+
+  try {
+    latestCases = (await fetchCaseList(locale)).slice(0, 3);
+  } catch {
+    caseFetchFallback = t("cases.fetchError");
+  }
 
   return (
     <>
-      {/* Hero */}
-      <PageHero
-        title={hero.heading}
-        description={hero.subheading}
-        className="bg-gradient-to-br from-blue-900 to-blue-700 text-white"
-        containerClassName="text-center"
-        descriptionClassName="text-blue-100 mx-auto"
-        titleClassName="text-white lg:text-6xl"
-      >
-        <Button href={hero.cta.href} variant="secondary">
-          {hero.cta.label}
-        </Button>
-      </PageHero>
+      <HeroSection
+        title={t("hero.title")}
+        description={t("hero.description")}
+        primaryCtaLabel={t("hero.primaryCta")}
+        secondaryCtaLabel={t("hero.secondaryCta")}
+        primaryHref={`/${locale}/contact`}
+        secondaryHref={`/${locale}/services`}
+        stats={[
+          { value: t("hero.stats.languages.value"), label: t("hero.stats.languages.label") },
+          { value: t("hero.stats.customers.value"), label: t("hero.stats.customers.label") },
+          { value: t("hero.stats.turnaround.value"), label: t("hero.stats.turnaround.label") },
+        ]}
+      />
 
-      {/* Features */}
-      <Section>
-        <h2 className="text-2xl font-bold text-gray-900 text-center mb-12">
-          Why Nililia
-        </h2>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {features.map((feature) => (
-            <Card key={feature.title}>
-              <h3 className="text-lg font-semibold text-gray-900">{feature.title}</h3>
-              <p className="mt-2 text-sm text-gray-600">{feature.description}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
+      <SocialProofSection
+        title={t("socialProof.title")}
+        logos={[
+          "client 01",
+          "client 02",
+          "client 03",
+          "client 04",
+          "client 05",
+          "client 06",
+          "client 07",
+          "client 08",
+        ]}
+      />
 
-      {/* CTA band */}
-      <section className="bg-blue-50 py-16">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-2xl font-bold text-gray-900">Ready to expand your reach?</h2>
-          <p className="mt-3 text-gray-600">
-            Explore our services or read about how we have helped other businesses.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/services">Our Service</Button>
-            <Button href="/news/stories" variant="outline">Customer Stories</Button>
-          </div>
-        </div>
-      </section>
+      <CoreValuesSection
+        title={t("coreValues.title")}
+        values={[
+          {
+            icon: "🎯",
+            title: t("coreValues.items.accuracy.title"),
+            description: t("coreValues.items.accuracy.description"),
+          },
+          {
+            icon: "⚡",
+            title: t("coreValues.items.speed.title"),
+            description: t("coreValues.items.speed.description"),
+          },
+          {
+            icon: "🔒",
+            title: t("coreValues.items.security.title"),
+            description: t("coreValues.items.security.description"),
+          },
+        ]}
+      />
+
+      <ServicesPreviewSection
+        title={t("services.title")}
+        items={[
+          { title: t("services.items.video.title"), description: t("services.items.video.description") },
+          { title: t("services.items.document.title"), description: t("services.items.document.description") },
+          { title: t("services.items.webtoon.title"), description: t("services.items.webtoon.description") },
+          { title: t("services.items.marketing.title"), description: t("services.items.marketing.description") },
+          { title: t("services.items.uiux.title"), description: t("services.items.uiux.description") },
+          { title: t("services.items.localizationQa.title"), description: t("services.items.localizationQa.description") },
+        ]}
+      />
+
+      <WhyNililiaSection
+        title={t("whyNililia.title")}
+        items={[
+          {
+            title: t("whyNililia.items.technicalExpertise.title"),
+            description: t("whyNililia.items.technicalExpertise.description"),
+          },
+          {
+            title: t("whyNililia.items.oneStopProcess.title"),
+            description: t("whyNililia.items.oneStopProcess.description"),
+          },
+          {
+            title: t("whyNililia.items.domainSpecialists.title"),
+            description: t("whyNililia.items.domainSpecialists.description"),
+          },
+          {
+            title: t("whyNililia.items.scalableOperations.title"),
+            description: t("whyNililia.items.scalableOperations.description"),
+          },
+        ]}
+      />
+
+      <LatestCasesSection
+        title={t("cases.title")}
+        locale={locale}
+        cases={latestCases}
+        emptyLabel={t("cases.empty")}
+        fallbackLabel={caseFetchFallback}
+      />
+
+      <FaqSection
+        title={t("faq.title")}
+        items={[
+          { question: t("faq.items.q1.question"), answer: t("faq.items.q1.answer") },
+          { question: t("faq.items.q2.question"), answer: t("faq.items.q2.answer") },
+          { question: t("faq.items.q3.question"), answer: t("faq.items.q3.answer") },
+          { question: t("faq.items.q4.question"), answer: t("faq.items.q4.answer") },
+        ]}
+      />
+
+      <BottomCtaSection
+        title={t("bottomCta.title")}
+        primaryLabel={t("bottomCta.primaryCta")}
+        secondaryLabel={t("bottomCta.secondaryCta")}
+        primaryHref={`/${locale}/contact`}
+        secondaryHref={`/${locale}/services`}
+      />
     </>
   );
 }
