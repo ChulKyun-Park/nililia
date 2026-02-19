@@ -6,5 +6,128 @@
     "cases": "Cases",
     "news": "News",
     "careers": "Careers"
+  },
+  "Home": {
+    "hero": {
+      "title": "당신의 콘텐츠에 날개를 달아줍니다",
+      "description": "글로벌 콘텐츠의 핵심, 닐리리아의 전문 로컬라이제이션으로 더 빠르고 정확하게 시장에 도달하세요.",
+      "primaryCta": "문의하기",
+      "secondaryCta": "견적 받기",
+      "stats": {
+        "languages": {
+          "value": "10+",
+          "label": "지원 언어"
+        },
+        "customers": {
+          "value": "1,300+",
+          "label": "기업 고객"
+        },
+        "turnaround": {
+          "value": "24h",
+          "label": "평균 납기"
+        }
+      }
+    },
+    "socialProof": {
+      "title": "1,300여 이상의 기업이 닐리리아와 함께합니다"
+    },
+    "coreValues": {
+      "title": "글로벌 콘텐츠의 새로운 기준",
+      "items": {
+        "accuracy": {
+          "title": "정확도",
+          "description": "산업별 전문가의 다층 검수로 맥락까지 정확하게 전달합니다."
+        },
+        "speed": {
+          "title": "속도",
+          "description": "자동화 워크플로우와 전담 PM으로 프로젝트를 빠르게 완수합니다."
+        },
+        "security": {
+          "title": "보안",
+          "description": "엄격한 보안 프로토콜과 NDA 기반 운영으로 콘텐츠를 안전하게 보호합니다."
+        }
+      }
+    },
+    "services": {
+      "title": "닐리리아의 콘텐츠 글로벌라이제이션 서비스",
+      "items": {
+        "video": {
+          "title": "영상 번역 · 자막",
+          "description": "OTT, 유튜브, 기업 홍보 영상까지 플랫폼 최적화 번역을 지원합니다."
+        },
+        "document": {
+          "title": "문서 번역",
+          "description": "기술 문서, 백서, 제안서 등 비즈니스 문서를 정밀하게 현지화합니다."
+        },
+        "webtoon": {
+          "title": "웹툰 · 스토리 현지화",
+          "description": "장르와 캐릭터 톤을 살리는 스토리텔링 중심 번역을 제공합니다."
+        },
+        "marketing": {
+          "title": "마케팅 카피",
+          "description": "브랜드 메시지를 시장별 문화 맥락에 맞게 재구성합니다."
+        },
+        "uiux": {
+          "title": "UI/UX 텍스트",
+          "description": "서비스 톤앤매너를 유지하며 제품 사용성을 높이는 마이크로카피를 설계합니다."
+        },
+        "localizationQa": {
+          "title": "LQA · 감수",
+          "description": "출시 전 언어 품질, 기능, 레이아웃까지 통합 점검합니다."
+        }
+      }
+    },
+    "whyNililia": {
+      "title": "왜 닐리리아일까요?",
+      "items": {
+        "technicalExpertise": {
+          "title": "Technical Expertise",
+          "description": "도메인별 전문 번역가와 언어 엔지니어가 기술 정확도를 보장합니다."
+        },
+        "oneStopProcess": {
+          "title": "One-stop Process",
+          "description": "상담부터 납품까지 하나의 파이프라인으로 운영되어 커뮤니케이션 비용을 줄입니다."
+        },
+        "domainSpecialists": {
+          "title": "Domain Specialists",
+          "description": "미디어, IT, 게임, 교육 등 산업 맞춤 팀이 프로젝트별 최적 해법을 제시합니다."
+        },
+        "scalableOperations": {
+          "title": "Scalable Operations",
+          "description": "대량 콘텐츠도 일정과 품질을 유지하는 확장형 운영 체계를 제공합니다."
+        }
+      }
+    },
+    "cases": {
+      "title": "성공 사례",
+      "empty": "곧 새로운 성공 사례를 공개할 예정입니다.",
+      "fetchError": "성공 사례를 불러오는 중 문제가 발생했습니다. 잠시 후 다시 시도해 주세요."
+    },
+    "faq": {
+      "title": "자주 묻는 질문",
+      "items": {
+        "q1": {
+          "question": "프로젝트는 얼마나 빨리 시작할 수 있나요?",
+          "answer": "요구사항 확인 후 평균 24시간 이내에 견적과 일정 제안을 드립니다."
+        },
+        "q2": {
+          "question": "어떤 파일 형식을 지원하나요?",
+          "answer": "DOCX, PPTX, SRT, JSON, XLIFF 등 다양한 파일 형식을 지원합니다."
+        },
+        "q3": {
+          "question": "보안이 중요한 자료도 맡길 수 있나요?",
+          "answer": "NDA 체결 및 접근 권한 통제를 기본으로 운영하며, 민감 자료도 안전하게 처리합니다."
+        },
+        "q4": {
+          "question": "샘플 번역을 먼저 받아볼 수 있나요?",
+          "answer": "네, 프로젝트 규모와 도메인에 따라 샘플 번역 제공이 가능합니다."
+        }
+      }
+    },
+    "bottomCta": {
+      "title": "글로벌 시장으로의 첫 걸음, 지금 시작하세요",
+      "primaryCta": "문의하기",
+      "secondaryCta": "서비스 보기"
+    }
   }
 }

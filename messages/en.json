@@ -6,5 +6,128 @@
     "cases": "Cases",
     "news": "News",
     "careers": "Careers"
+  },
+  "Home": {
+    "hero": {
+      "title": "Give your content wings",
+      "description": "Power your global content strategy with Nililia's fast and accurate localization expertise.",
+      "primaryCta": "Contact us",
+      "secondaryCta": "Get a quote",
+      "stats": {
+        "languages": {
+          "value": "10+",
+          "label": "Supported languages"
+        },
+        "customers": {
+          "value": "1,300+",
+          "label": "Enterprise clients"
+        },
+        "turnaround": {
+          "value": "24h",
+          "label": "Average delivery"
+        }
+      }
+    },
+    "socialProof": {
+      "title": "Over 1,300 companies trust Nililia"
+    },
+    "coreValues": {
+      "title": "A new standard for global content",
+      "items": {
+        "accuracy": {
+          "title": "Accuracy",
+          "description": "Multi-layer reviews by domain experts ensure context-aware quality."
+        },
+        "speed": {
+          "title": "Speed",
+          "description": "Automation workflows and dedicated PMs keep projects moving quickly."
+        },
+        "security": {
+          "title": "Security",
+          "description": "Strict security protocols and NDA-based operations protect your content."
+        }
+      }
+    },
+    "services": {
+      "title": "Nililia's content globalization services",
+      "items": {
+        "video": {
+          "title": "Video translation & subtitles",
+          "description": "Platform-ready localization for OTT, YouTube, and branded videos."
+        },
+        "document": {
+          "title": "Document translation",
+          "description": "Precise localization for technical docs, whitepapers, and proposals."
+        },
+        "webtoon": {
+          "title": "Webtoon & story localization",
+          "description": "Narrative-focused translation that preserves tone and character voice."
+        },
+        "marketing": {
+          "title": "Marketing copy",
+          "description": "Market-specific messaging tailored to local cultural context."
+        },
+        "uiux": {
+          "title": "UI/UX text",
+          "description": "Microcopy that improves usability while keeping product voice consistent."
+        },
+        "localizationQa": {
+          "title": "LQA & proofreading",
+          "description": "Integrated checks for linguistic quality, functionality, and layout."
+        }
+      }
+    },
+    "whyNililia": {
+      "title": "Why Nililia?",
+      "items": {
+        "technicalExpertise": {
+          "title": "Technical Expertise",
+          "description": "Specialist translators and language engineers deliver high technical precision."
+        },
+        "oneStopProcess": {
+          "title": "One-stop Process",
+          "description": "A single pipeline from consultation to delivery reduces communication overhead."
+        },
+        "domainSpecialists": {
+          "title": "Domain Specialists",
+          "description": "Industry-focused teams provide project-specific solutions across domains."
+        },
+        "scalableOperations": {
+          "title": "Scalable Operations",
+          "description": "Scale to large content volumes without sacrificing timeline or quality."
+        }
+      }
+    },
+    "cases": {
+      "title": "Success cases",
+      "empty": "New success stories will be published soon.",
+      "fetchError": "We couldn't load success stories right now. Please try again later."
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": {
+        "q1": {
+          "question": "How quickly can we start a project?",
+          "answer": "After requirement review, we usually provide quote and schedule within 24 hours."
+        },
+        "q2": {
+          "question": "Which file formats do you support?",
+          "answer": "We support DOCX, PPTX, SRT, JSON, XLIFF, and many more."
+        },
+        "q3": {
+          "question": "Can you handle sensitive materials?",
+          "answer": "Yes. We operate with NDA agreements and strict access control by default."
+        },
+        "q4": {
+          "question": "Can we request a sample translation first?",
+          "answer": "Yes, sample translation is available depending on project scope and domain."
+        }
+      }
+    },
+    "bottomCta": {
+      "title": "Take your first step into global markets today",
+      "primaryCta": "Contact us",
+      "secondaryCta": "View services"
+    }
   }
 }
