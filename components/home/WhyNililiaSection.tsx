@@ -1,28 +1,144 @@
-import Card from "@/components/ui/Card";
-import Section from "@/components/ui/Section";
+"use client";
 
-type FeatureItem = {
-  title: string;
-  description: string;
-};
+import { useState, useEffect, useRef } from "react";
 
-interface WhyNililiaSectionProps {
-  title: string;
-  items: FeatureItem[];
-}
+export default function WhyNililiaSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
 
-export default function WhyNililiaSection({ title, items }: WhyNililiaSectionProps) {
+  const reasons = [
+    {
+      number: '01',
+      title: '압도적인 기술력으로',
+      description: '닐리리아의 독자 기술은 단순히 번역을 효율화 하는 것에서 그치지 않습니다. 일하는 방식 전체를 혁신합니다.',
+      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+      tags: ['표준·자동화된 워크플로', '생산율을 높이는 에디터', '자동화 품질 관리']
+    },
+    {
+      number: '02',
+      title: '콘텐츠 세계화 과정 전반 지원',
+      description: '번역, 자막 처리, 더빙 등 현지화 전 과정을 지원합니다. 더 적은 리소스로 더 많은 콘텐츠를 세계화해 보세요.',
+      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+      tags: ['웹툰 디자인', '영상 디자인', '보이스오버 / 더빙']
+    },
+    {
+      number: '03',
+      title: '원스톱으로 손쉬운 콘텐츠 유통',
+      description: '작품 선정부터 라이선싱 협상, 수익 정산까지 전 과정을 지원하는 닐리리아는 믿을 수 있는 유통 파트너입니다.',
+      image: 'https://images.unsplash.com/photo-1551288049-bbbda536ad37?auto=format&fit=crop&q=80&w=800',
+      tags: ['번거로움 없는 수출', '수준 높은 번역·현지화']
+    }
+  ];
+
+  // 무한 루프를 위해 데이터 복제
+  const extendedReasons = [...reasons, reasons[0]];
+
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setActiveIndex((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    timerRef.current = setInterval(handleNext, 3500); // 3.5초 대기
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (activeIndex === reasons.length) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setActiveIndex(0);
+      }, 500); // 0.5초 애니메이션 후 순간이동
+      return () => clearTimeout(timeout);
+    }
+  }, [activeIndex, reasons.length]);
+
+  const goToSlide = (index: number) => {
+    setIsTransitioning(true);
+    setActiveIndex(index);
+  };
+
   return (
-    <Section>
-      <h2 className="text-center text-2xl font-bold text-gray-900">{title}</h2>
-      <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
-        {items.map((item) => (
-          <Card key={item.title} className="h-full border-l-4 border-l-blue-600">
-            <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-            <p className="mt-2 text-sm text-gray-600">{item.description}</p>
-          </Card>
-        ))}
+    <section className="py-24 bg-white overflow-hidden">
+      <div className="mx-auto max-w-[1200px] px-6">
+        
+        <div className="relative min-h-[600px] flex flex-col justify-center">
+          {/* 상단 레이블은 고정 */}
+          <div className="absolute top-0 left-0 w-full z-10 border-b border-gray-50 pb-4">
+            <span className="text-blue-600 font-bold text-2xl tracking-tight">Why Nililia</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mt-20">
+            
+            {/* 좌측: 숫자 + 텍스트 통합 수직 슬라이드 (통합 트랙) */}
+            <div className="lg:col-span-5 relative h-[400px] overflow-hidden order-2 lg:order-1">
+              <div 
+                className={isTransitioning ? "transition-transform duration-500 ease-in-out" : ""}
+                style={{ transform: `translateY(-${activeIndex * 400}px)` }}
+              >
+                {extendedReasons.map((reason, idx) => (
+                  <div key={idx} className="h-[400px] flex flex-col justify-center">
+                    {/* 숫자를 타이틀 바로 위로 배치하여 한 번에 같이 슬라이드되게 함 */}
+                    <div className="text-4xl font-black text-blue-600/20 mb-4">
+                      {reason.number}
+                    </div>
+                    <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-[1.2] break-keep">
+                      {reason.title}
+                    </h2>
+                    <p className="text-xl text-gray-600 mb-8 leading-relaxed break-keep">
+                      {reason.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {reason.tags.map((tag) => (
+                        <span key={tag} className="px-4 py-2 bg-slate-50 rounded-lg text-xs font-bold text-slate-400 border border-slate-100">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* 우측: 이미지 수직 슬라이드 + 세로 인디케이터 */}
+            <div className="lg:col-span-7 flex items-center gap-8 order-1 lg:order-2">
+              <div className="relative flex-1 h-[450px] overflow-hidden rounded-[48px] shadow-2xl">
+                <div 
+                  className={isTransitioning ? "transition-transform duration-500 ease-in-out h-full" : "h-full"}
+                  style={{ transform: `translateY(-${activeIndex * 450}px)` }}
+                >
+                  {extendedReasons.map((reason, idx) => (
+                    <div key={idx} className="h-[450px] w-full relative shrink-0">
+                      <img 
+                        src={reason.image} 
+                        alt={reason.title} 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 세로형 점(Dot) 인디케이터 */}
+              <div className="flex flex-col gap-4 py-4">
+                {reasons.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToSlide(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      (activeIndex % reasons.length) === index ? "bg-blue-600" : "bg-slate-200 hover:bg-slate-300"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-    </Section>
+    </section>
   );
 }

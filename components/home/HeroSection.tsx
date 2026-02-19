@@ -1,12 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useTranslations } from "next-intl";
-
-type HeroStat = {
-  label: string;
-  value: string;
-};
 
 interface HeroSectionProps {
   title: string;
@@ -15,7 +9,7 @@ interface HeroSectionProps {
   secondaryCtaLabel: string;
   primaryHref: string;
   secondaryHref: string;
-  stats: HeroStat[];
+  stats: { label: string; value: string }[];
 }
 
 export default function HeroSection({
@@ -27,126 +21,87 @@ export default function HeroSection({
   secondaryHref,
   stats,
 }: HeroSectionProps) {
-  const t = useTranslations("Home");
-
-  // Marquee 애니메이션에 사용될 텍스트 데이터
-  const marqueeLeftTexts = [
-    t("services.items.video.title"),
-    t("services.items.marketing.title"),
-    "HOLA",
-    "THANK YOU"
-  ];
-
-  const marqueeRightTexts = [
-    "COMPANY",
-    "CREATOR",
-    t("services.items.uiux.title"),
-    t("services.items.webtoon.title")
-  ];
-
   return (
-    <section className="relative bg-white py-16 sm:py-24 overflow-hidden">
-      {/* 1. GPU 가속 애니메이션 정의 */}
+    <section className="relative bg-[#F8FAFC] py-20 lg:py-32 overflow-hidden">
       <style>{`
-        @keyframes home-floating-updown {
-          0%, 100% { transform: translate3d(0, 0, 0); }
-          50% { transform: translate3d(0, -15px, 0); }
-        }
-        @keyframes home-marquee-left {
-          0% { transform: translate3d(0, 0, 0); }
-          100% { transform: translate3d(-50%, 0, 0); }
-        }
-        @keyframes home-marquee-right {
-          0% { transform: translate3d(-50%, 0, 0); }
-          100% { transform: translate3d(0, 0, 0); }
+        @keyframes floating-soft {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
         }
       `}</style>
-
+      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           
-          {/* 2. 좌측: 텍스트 및 버튼 섹션 */}
-          <div className="lg:col-span-7">
-            <h1 className="text-4xl font-bold leading-tight text-slate-900 sm:text-6xl">
+          {/* 좌측 텍스트 영역 */}
+          <div className="lg:col-span-6 z-10">
+            {/* 1. 메인 타이틀 줄간격 대폭 수정 (leading-[1.6]) */}
+            <h1 className="text-4xl font-bold leading-[1.6] text-slate-900 sm:text-6xl break-keep whitespace-pre-line">
+              {/* 타이틀 글씨가 위아래로 넉넉하게 배치되도록 1.6 수치를 부여했습니다. */}
               {title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-slate-600 max-w-xl">
+
+            {/* 2. 설명 문구 줄간격 (기존 대비 소폭 조정) */}
+            <p className="mt-10 text-lg text-slate-600 leading-[1.8] break-keep max-w-xl">
               {description}
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link
-                href={primaryHref}
-                className="rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-bold text-white shadow-lg hover:bg-blue-700 transition-all"
-              >
+            
+            <div className="mt-12 flex flex-wrap gap-4">
+              <Link href={primaryHref} className="rounded-xl bg-blue-600 px-8 py-4 text-white font-bold shadow-lg hover:bg-blue-700 transition-all active:scale-95">
                 {primaryCtaLabel}
               </Link>
-              <Link
-                href={secondaryHref}
-                className="rounded-xl border border-blue-200 bg-white px-6 py-3.5 text-sm font-bold text-blue-600 hover:bg-blue-50 transition-all"
-              >
+              <Link href={secondaryHref} className="rounded-xl border border-blue-200 bg-white px-8 py-4 font-bold text-blue-600 hover:bg-blue-50 transition-all active:scale-95">
                 {secondaryCtaLabel}
               </Link>
             </div>
 
-            {/* 통계 섹션 */}
-            <div className="mt-12 grid grid-cols-3 gap-8 border-t border-slate-100 pt-8">
+            <div className="mt-20 flex gap-12 border-t border-slate-100 pt-10">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-2xl font-black text-blue-600">{stat.value}</p>
-                  <p className="text-sm font-medium text-slate-500 mt-1">{stat.label}</p>
+                  <p className="text-3xl font-black text-blue-600 tracking-tight">{stat.value}</p>
+                  <p className="text-sm font-bold text-slate-400 mt-2 uppercase tracking-wider">{stat.label}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* 3. 우측: 애니메이션 카드 섹션 (디자인의 핵심) */}
-          <div className="lg:col-span-5 relative h-[450px] flex flex-col justify-center gap-6">
-            
-            {/* Hola/Thank You - 위아래 둥둥 */}
-            <div 
-              className="bg-white p-6 rounded-3xl shadow-xl border border-slate-100 w-64 self-end mr-10 z-20"
-              style={{ animation: "home-floating-updown 3.5s ease-in-out infinite" }}
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">A</div>
-                <div>
-                  <p className="text-sm font-bold text-slate-900">Hola</p>
-                  <p className="text-xs text-slate-500 italic">Thank you</p>
-                </div>
-              </div>
-            </div>
+          {/* 우측 카드 영역 */}
+          <div className="lg:col-span-6 relative flex justify-center lg:justify-end mt-12 lg:mt-0">
+            <div className="relative w-full max-w-[540px] aspect-[540/430] bg-white rounded-[48px] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-white p-10 grid grid-cols-2 gap-8">
+              <ServiceCard icon="▶" title="영상 번역" desc="자막 & 번역" />
+              <ServiceCard icon="📄" title="문서·카탈로그" desc="전문 번역" />
+              <ServiceCard icon="📖" title="웹소설" desc="현지화" />
+              <ServiceCard icon="📱" title="홈페이지·앱" desc="디지털 최적화" />
 
-            {/* Company - 우에서 좌로 무한 이동 (Marquee) */}
-            <div className="overflow-hidden py-2">
-              <div 
-                className="flex w-max gap-4" 
-                style={{ animation: "home-marquee-left 20s linear infinite" }}
-              >
-                {[...marqueeLeftTexts, ...marqueeLeftTexts].map((text, i) => (
-                  <div key={i} className="bg-white px-8 py-4 rounded-2xl shadow-md border border-slate-50 text-sm font-bold text-slate-700 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-blue-400" /> {text}
-                  </div>
-                ))}
-              </div>
+              <FloatingTag text="¡Hola!" pos="top-[-30px] right-[40px]" delay="0s" />
+              <FloatingTag text="Thank you" pos="top-[50%] right-[-50px]" delay="0.5s" />
+              <FloatingTag text="こんにちは" pos="bottom-[40px] left-[-60px]" delay="1s" />
             </div>
-
-            {/* Creator - 좌에서 우로 무한 이동 (Marquee) */}
-            <div className="overflow-hidden py-2">
-              <div 
-                className="flex w-max gap-4" 
-                style={{ animation: "home-marquee-right 25s linear infinite" }}
-              >
-                {[...marqueeRightTexts, ...marqueeRightTexts].map((text, i) => (
-                  <div key={i} className="bg-white px-8 py-4 rounded-2xl shadow-md border border-slate-50 text-sm font-bold text-blue-600 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-red-400" /> {text}
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
+
         </div>
       </div>
     </section>
+  );
+}
+
+function ServiceCard({ icon, title, desc }: { icon: string; title: string; desc: string }) {
+  return (
+    <div className="bg-[#F8FAFC] rounded-[32px] p-8 flex flex-col justify-center items-start border border-slate-50 transition-transform hover:scale-[1.02]">
+      <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-5 shadow-blue-200 shadow-xl text-xl">{icon}</div>
+      <p className="font-bold text-slate-900 text-xl">{title}</p>
+      <p className="text-sm text-slate-500 mt-2 leading-normal">{desc}</p>
+    </div>
+  );
+}
+
+function FloatingTag({ text, pos, delay }: { text: string; pos: string; delay: string }) {
+  return (
+    <div 
+      className={`absolute ${pos} bg-white px-6 py-3 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.08)] border border-slate-50 text-sm font-bold text-slate-700 z-30`}
+      style={{ animation: `floating-soft 4s ease-in-out infinite ${delay}` }}
+    >
+      {text}
+    </div>
   );
 }

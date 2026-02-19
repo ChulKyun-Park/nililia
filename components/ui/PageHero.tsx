@@ -23,10 +23,20 @@ export default function PageHero({
   return (
     <section className={`${className} py-20 sm:py-24`}>
       <Container className={containerClassName}>
-        <h1 className={`text-4xl sm:text-5xl font-bold tracking-tight ${titleClassName}`}>{title}</h1>
+        {/* h1 태그에 leading-tight 대신 고정 수치인 leading-[1.4]를 추가하여 줄간격을 벌렸습니다. */}
+        <h1 
+          className={`text-4xl sm:text-5xl font-bold tracking-tight leading-[1.4] sm:leading-[1.5] break-keep ${titleClassName}`}
+        >
+          {title}
+        </h1>
+        
         {description ? (
-          <p className={`mt-5 max-w-3xl text-lg sm:text-xl ${descriptionClassName}`}>{description}</p>
+          /* p 태그에도 leading-relaxed를 추가하여 긴 설명글이 시원하게 보이도록 했습니다. */
+          <p className={`mt-6 max-w-3xl text-lg sm:text-xl leading-relaxed break-keep ${descriptionClassName}`}>
+            {description}
+          </p>
         ) : null}
+        
         {children ? <div className="mt-10">{children}</div> : null}
       </Container>
     </section>

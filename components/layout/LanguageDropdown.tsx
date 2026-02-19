@@ -4,32 +4,36 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import { ChevronDown } from "lucide-react";
+import "flag-icons/css/flag-icons.min.css";
 
 export type LanguageOption = {
   code: (typeof routing.locales)[number];
-  flag: string;
+  iso: string;
 };
 
 const languageOptions: LanguageOption[] = [
-  { code: "ko", flag: "🇰🇷" },
-  { code: "en", flag: "🇺🇸" },
-  { code: "zh", flag: "🇨🇳" },
-  { code: "tw", flag: "🇹🇼" },
-  { code: "jp", flag: "🇯🇵" },
-  { code: "vi", flag: "🇻🇳" },
-  { code: "es", flag: "🇪🇸" },
-  { code: "id", flag: "🇮🇩" },
-  { code: "th", flag: "🇹🇭" },
-  { code: "ru", flag: "🇷🇺" },
+  { code: "ko", iso: "kr" },
+  { code: "en", iso: "us" },
+  { code: "zh", iso: "cn" },
+  { code: "tw", iso: "tw" },
+  { code: "jp", iso: "jp" },
+  { code: "vi", iso: "vn" },
+  { code: "es", iso: "es" },
+  { code: "id", iso: "id" },
+  { code: "th", iso: "th" },
+  { code: "ru", iso: "ru" },
 ];
 
 function LanguageBadge({ option }: { option: LanguageOption }) {
   return (
     <span className="inline-flex items-center gap-2">
-      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-sm">
-        {option.flag}
+      <span className="flex h-5 w-5 items-center justify-center overflow-hidden rounded-md shadow-sm ring-1 ring-slate-100 shrink-0">
+        <span className={`fi fi-${option.iso} !block text-[14px] scale-150`} />
       </span>
-      <span className="text-sm font-semibold uppercase">{option.code}</span>
+      <span className="text-[13px] font-bold uppercase tracking-tight text-slate-700 leading-none">
+        {option.code}
+      </span>
     </span>
   );
 }
@@ -47,14 +51,9 @@ export default function LanguageDropdown() {
   const closeMenu = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
-    if (!open) {
-      return;
-    }
-
+    if (!open) return;
     const container = containerRef.current;
-    if (!container) {
-      return;
-    }
+    if (!container) return;
 
     const onFocusOut = (event: globalThis.FocusEvent) => {
       if (!container.contains(event.relatedTarget as globalThis.Node)) {
@@ -67,43 +66,32 @@ export default function LanguageDropdown() {
   }, [open, closeMenu]);
 
   return (
-    <div ref={containerRef} className="relative">
+    <div ref={containerRef} className="relative inline-block w-[105px]">
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
         aria-expanded={open}
-        aria-haspopup="listbox"
-        className="inline-flex items-center gap-2 rounded-md border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+        className={`flex w-full items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2.5 transition-all hover:border-blue-300 ${
+          open ? "border-blue-400 ring-2 ring-blue-50" : ""
+        }`}
       >
         <LanguageBadge option={activeOption} />
-        <svg
-          className="h-4 w-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
+        <ChevronDown className={`h-3.5 w-3.5 text-slate-400 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
       </button>
 
       {open && (
-        <ul
-          role="listbox"
-          className="absolute right-0 top-full z-50 mt-2 w-40 rounded-lg border border-gray-200 bg-white p-1 shadow-lg"
-        >
+        <ul className="absolute left-0 right-0 z-[100] mt-1.5 max-h-60 overflow-y-auto rounded-xl border border-slate-100 bg-white p-1 shadow-2xl backdrop-blur-sm scrollbar-hide">
           {languageOptions.map((option) => (
             <li key={option.code}>
               <Link
                 href={pathname}
                 locale={option.code}
                 onClick={closeMenu}
-                className="flex w-full items-center rounded-md px-2 py-2 text-gray-700 hover:bg-gray-50"
+                className={`flex w-full items-center rounded-lg px-2 py-2.5 transition-colors ${
+                  currentLocale === option.code 
+                    ? "bg-blue-50 text-blue-600 font-bold" 
+                    : "text-slate-600 hover:bg-slate-50 hover:text-blue-600"
+                }`}
               >
                 <LanguageBadge option={option} />
               </Link>
