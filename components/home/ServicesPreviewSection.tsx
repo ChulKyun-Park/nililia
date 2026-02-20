@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Section from "@/components/ui/Section";
@@ -47,7 +48,13 @@ export default function ServicesPreviewSection({ title, items }: ServicesPreview
             <Link key={card.link} href={card.link} className="block h-full w-full max-w-[380px]">
               <CardShell className="group h-full overflow-hidden border-primary/10 p-0 hover:border-primary/20 hover:shadow-2xl">
                 <div className="relative h-56 overflow-hidden bg-primary/5">
-                  <img src={card.image} alt={item?.title ?? card.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <Image
+                    src={card.image}
+                    alt={item?.title ?? card.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                   <div className="absolute right-4 top-4 flex h-10 w-10 translate-y-2 items-center justify-center rounded-xl bg-white/90 opacity-0 backdrop-blur-md transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
                     <ArrowUpRight className="h-5 w-5 text-primary" />

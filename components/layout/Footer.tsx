@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { LOGO_IMAGE_PATH } from "@/lib/assets";
 import Container from "@/components/ui/Container";
@@ -11,7 +12,7 @@ export default function Footer() {
         <div className="flex flex-col gap-10 md:flex-row md:justify-between">
           <div className="md:w-[340px] flex-shrink-0">
             <div className="mb-3 flex items-center space-x-2">
-              <img src={LOGO_IMAGE_PATH} alt="NILILIA Logo" className="h-8 w-auto" />
+              <Image src={LOGO_IMAGE_PATH} alt="NILILIA Logo" width={120} height={32} className="h-8 w-auto" />
               <span className="text-xl font-bold tracking-tight text-white">NILILIA</span>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-gray-500">

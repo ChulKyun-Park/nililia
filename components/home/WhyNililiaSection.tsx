@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { UNSPLASH_IMAGES } from "@/lib/imageMap";
 
@@ -123,10 +124,12 @@ export default function WhyNililiaSection({ title, items }: WhyNililiaSectionPro
                 >
                   {extendedReasons.map((reason, idx) => (
                     <div key={idx} className="h-[450px] w-full relative shrink-0">
-                      <img 
-                        src={reason.image} 
-                        alt={reason.title} 
-                        className="w-full h-full object-cover"
+                      <Image
+                        src={reason.image}
+                        alt={reason.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="h-full w-full object-cover"
                       />
                     </div>
                   ))}

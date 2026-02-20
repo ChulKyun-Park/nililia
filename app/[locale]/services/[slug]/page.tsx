@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { Check, MessageSquare, ArrowLeft } from "lucide-react";
@@ -63,7 +64,13 @@ export default function ServiceDetailPage() {
       {/* Hero 섹션: 상단 이미지와 제목 */}
       <section className="relative pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"></div>
         </div>
 

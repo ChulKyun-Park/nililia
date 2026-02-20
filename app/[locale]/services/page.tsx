@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { Check, ArrowRight, ChevronRight, ArrowUpRight } from "lucide-react";
 import Container from "@/components/ui/Container";
@@ -95,7 +96,7 @@ export default function ServicesPage() {
             {/* CONTENTSFLY (AI) */}
             <div className="rounded-[32px] overflow-hidden border border-primary/10 shadow-sm bg-white transition-all hover:shadow-xl group">
               <div className="flex items-center justify-center py-16 bg-white transition-colors group-hover:bg-primary/5">
-                <img src={contentsflyImg} alt="CONTENTSFLY" className="w-[60%] h-auto object-contain" />
+                <Image src={contentsflyImg} alt="CONTENTSFLY" width={360} height={100} className="h-auto w-[60%] object-contain" />
               </div>
               <div className="p-10 text-center border-t border-primary/10">
                 <p className="text-[16px] text-gray-500 leading-relaxed mb-8 break-keep">
@@ -113,7 +114,7 @@ export default function ServicesPage() {
             {/* CONTENTSFLYS (Premium) */}
             <div className="rounded-[32px] overflow-hidden border border-gray-800 shadow-sm bg-[#111827] text-white transition-all hover:shadow-xl group">
               <div className="flex items-center justify-center py-16 bg-[#111827] transition-colors group-hover:bg-gray-800/50">
-                <img src={contentsflysImg} alt="CONTENTSFLYS" className="w-[60%] h-auto object-contain" />
+                <Image src={contentsflysImg} alt="CONTENTSFLYS" width={360} height={100} className="h-auto w-[60%] object-contain" />
               </div>
               <div className="p-10 text-center border-t border-gray-800">
                 <p className="text-[16px] text-gray-400 leading-relaxed mb-8 break-keep">
@@ -148,7 +149,13 @@ export default function ServicesPage() {
               >
                 {/* 이미지 영역: 홈 탭 h-56 설정 적용 */}
                 <div className="relative h-56 overflow-hidden bg-primary/5">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-60" />
                   <div className="absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-md rounded-xl flex items-center justify-center opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                     <ArrowUpRight className="text-primary w-5 h-5" />

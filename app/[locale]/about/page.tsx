@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Heart, ShieldCheck, Rocket, Users, Globe, ArrowRight } from "lucide-react";
 import { UNSPLASH_IMAGES } from "@/lib/imageMap";
@@ -77,10 +78,12 @@ export default function CompanyPage() {
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl border border-border">
-                <img
+                <Image
                   src={UNSPLASH_IMAGES.aboutTeam}
                   alt="Company Mission"
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
