@@ -1,0 +1,9 @@
+{
+  "samples": [
+    "https://secure.notion-static.com/2f4a5d4e-1234-5678-90ab-acdeff001122/thumbnail.png",
+    "https://prod-files-secure.s3.us-west-2.amazonaws.com/ab12cd34-5678-90ef-ab12-cd34567890ef/11223344-5566-7788-99aa-bbccddeeff00/cover.jpg",
+    "https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fteam%2Fhero.webp",
+    "https://file.notion.so/f/folder-id/sample-thumbnail.jpeg",
+    "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/public/path/notion-cover.avif"
+  ]
+}

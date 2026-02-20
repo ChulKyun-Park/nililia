@@ -1,16 +1,9 @@
 "use client";
 
-import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { Check, ArrowLeft, MessageSquare } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { contentsflysContent } from "@/lib/content";
-
-/**
- * Note: metadata is usually for Server Components. 
- * Since we use "use client", metadata should be handled in a separate layout or 
- * by using a different pattern. For this unit, we focus on the UI structure.
- */
 
 export default function ContentsflysPage() {
   const { heading, subheading, body, features } = contentsflysContent;

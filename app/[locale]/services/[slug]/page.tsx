@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { Check, MessageSquare, ArrowLeft } from "lucide-react";
 import Container from "@/components/ui/Container";
+import { UNSPLASH_IMAGES } from "@/lib/imageMap";
 
 // 사용자님이 주신 상세 데이터를 이곳에서 관리합니다. (나중에는 백엔드 API로 대체됩니다)
 const serviceData: Record<string, {
@@ -22,7 +24,7 @@ const serviceData: Record<string, {
       '전문 번역가와 네이티브 검수자가 문화적 맥락을 고려한 자연스러운 번역을 제공하며 최종 품질 검수를 통해 완벽한 결과물을 보장합니다.',
     ],
     features: ['다국어 자막 제작', '타이밍 동기화', '스타일 커스터마이징', '품질 검수', '문화적 맥락 반영', '네이티브 검수'],
-    image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=1200',
+    image: UNSPLASH_IMAGES.serviceVideo,
   },
   'document-translation': {
     title: '문서·카탈로그 번역',
@@ -32,7 +34,7 @@ const serviceData: Record<string, {
       '전문 용어집 관리와 스타일 가이드 준수를 통해 일관성 있는 번역 품질을 유지합니다.'
     ],
     features: ['전문 분야별 번역', '용어집 관리', '스타일 가이드 준수', '원어민 검수'],
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200',
+    image: UNSPLASH_IMAGES.serviceDocument,
   },
   // 나머지 서비스 데이터(game-translation 등)도 동일한 방식으로 추가 가능합니다.
 };
@@ -62,7 +64,13 @@ export default function ServiceDetailPage() {
       {/* Hero 섹션: 상단 이미지와 제목 */}
       <section className="relative pt-40 pb-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+          <Image
+            src={service.image}
+            alt={service.title}
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="h-full w-full object-cover"
+          />
           <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"></div>
         </div>
 
