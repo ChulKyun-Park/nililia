@@ -87,3 +87,8 @@
 - Resolved `MISSING_MESSAGE: Home` build-time logs by making Home-page translations locale-safe: locales without a `Home` namespace now fall back to `en` for that namespace (`app/[locale]/page.tsx`).
 - Updated header navigation labels to use i18n message keys from `common` instead of hardcoded strings, improving consistency across locales (`components/layout/Header.tsx`).
 - Added an optional `spacing` variant to `Section` (`default`=`py-24`, `tight`=`py-16`) and applied `tight` to News/Cases list & detail pages to improve desktop whitespace rhythm without broad redesign.
+
+
+### CI default-branch alignment
+- Repository default branch is `work`, so CI push triggers were updated to include `work` (and `main` for compatibility).
+- Expected merge sequencing for the rollout remains: A -> B -> C -> D.
