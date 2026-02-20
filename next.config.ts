@@ -1,17 +1,14 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+import type { NextConfig } from "next";
+import imageHostAllowlist from "./config/image-host-allowlist.json";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  // 필요한 설정(이미지 도메인 등)이 있다면 여기에 추가하세요.
+const remoteImageHosts = [...imageHostAllowlist.unsplash, ...imageHostAllowlist.notionThumbnails];
+
+const nextConfig: NextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
+    remotePatterns: remoteImageHosts.map((hostname) => ({ protocol: "https", hostname })),
   },
 };
 

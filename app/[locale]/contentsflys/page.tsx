@@ -1,16 +1,9 @@
 "use client";
 
-import type { Metadata } from "next";
 import { Link } from "@/i18n/navigation";
 import { Check, ArrowLeft, MessageSquare } from "lucide-react";
 import Container from "@/components/ui/Container";
 import { contentsflysContent } from "@/lib/content";
-
-/**
- * Note: metadata is usually for Server Components. 
- * Since we use "use client", metadata should be handled in a separate layout or 
- * by using a different pattern. For this unit, we focus on the UI structure.
- */
 
 export default function ContentsflysPage() {
   const { heading, subheading, body, features } = contentsflysContent;
@@ -34,16 +27,12 @@ export default function ContentsflysPage() {
               {body}
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link href="/services">
-                <button className="px-8 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 flex items-center">
-                  <ArrowLeft className="mr-2 w-5 h-5" />
-                  Back to Services
-                </button>
+              <Link href="/services" className="flex items-center rounded-xl bg-primary px-8 py-4 text-lg font-bold text-primary-foreground shadow-lg shadow-primary/20 transition-all hover:bg-primary/90">
+                <ArrowLeft className="mr-2 h-5 w-5" />
+                Back to Services
               </Link>
-              <Link href="/contact">
-                <button className="px-8 py-4 bg-background text-primary border-2 border-primary rounded-xl font-bold text-lg hover:bg-primary/5 transition-all">
-                  Inquiry Now
-                </button>
+              <Link href="/contact" className="rounded-xl border-2 border-primary bg-background px-8 py-4 text-lg font-bold text-primary transition-all hover:bg-primary/5">
+                Inquiry Now
               </Link>
             </div>
           </div>
@@ -83,11 +72,9 @@ export default function ContentsflysPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-8 tracking-tight">
             Ready to elevate your global content?
           </h2>
-          <Link href="/contact">
-            <button className="bg-background text-primary px-12 py-5 rounded-xl font-bold text-xl hover:bg-background/90 transition-all shadow-2xl flex items-center mx-auto group">
-              <MessageSquare className="mr-3 w-6 h-6 group-hover:scale-110 transition-transform" />
-              Get a Free Consultation
-            </button>
+          <Link href="/contact" className="group mx-auto inline-flex items-center rounded-xl bg-background px-12 py-5 text-xl font-bold text-primary shadow-2xl transition-all hover:bg-background/90">
+            <MessageSquare className="mr-3 h-6 w-6 transition-transform group-hover:scale-110" />
+            Get a Free Consultation
           </Link>
         </Container>
       </section>

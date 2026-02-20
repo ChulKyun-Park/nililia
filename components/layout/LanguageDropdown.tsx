@@ -17,6 +17,7 @@ const languageOptions: LanguageOption[] = [
   { code: "en", iso: "us" },
   { code: "zh", iso: "cn" },
   { code: "tw", iso: "tw" },
+  { code: "ja", iso: "jp" },
   { code: "jp", iso: "jp" },
   { code: "vi", iso: "vn" },
   { code: "es", iso: "es" },

@@ -1,6 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { Heart, ShieldCheck, Rocket, Users, Globe, ArrowRight } from "lucide-react";
+import { UNSPLASH_IMAGES } from "@/lib/imageMap";
 
 export default function CompanyPage() {
   const values = [
@@ -74,11 +77,13 @@ export default function CompanyPage() {
               </p>
             </div>
             <div className="relative">
-              <div className="aspect-[4/3] rounded-xl overflow-hidden shadow-2xl border border-border">
-                <img
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800"
+              <div className="aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl border border-border">
+                <Image
+                  src={UNSPLASH_IMAGES.aboutTeam}
                   alt="Company Mission"
-                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
@@ -103,7 +108,7 @@ export default function CompanyPage() {
             {values.map((value, index) => (
               <div
                 key={index}
-                className="bg-card rounded-xl p-8 border border-border hover:border-primary hover:shadow-xl transition-all group text-center"
+                className="bg-card rounded-[32px] p-8 border border-border hover:border-primary hover:shadow-xl transition-all group text-center"
               >
                 <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-colors text-primary">
                   {value.icon}
@@ -145,11 +150,11 @@ export default function CompanyPage() {
                       <div className={isLeft ? "pr-12" : "invisible h-0 md:visible md:h-auto"}>
                         {isLeft && (
                           <div className="flex flex-col md:flex-row-reverse gap-6 items-center">
-                            <div className="shrink-0 bg-card rounded-xl p-6 border border-border hover:border-primary transition-all shadow-sm w-full md:w-40 text-center">
+                            <div className="shrink-0 bg-card rounded-[32px] p-6 border border-border hover:border-primary transition-all shadow-sm w-full md:w-40 text-center">
                               <div className="text-3xl font-black text-primary mb-1">{milestone.year}</div>
                               <h3 className="text-lg font-bold text-foreground">{milestone.title}</h3>
                             </div>
-                            <div className="bg-card rounded-xl p-5 border border-border shadow-sm text-right hidden md:block">
+                            <div className="bg-card rounded-[32px] p-5 border border-border shadow-sm text-right hidden md:block">
                               <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                                 {milestone.extra}
                               </p>
@@ -162,11 +167,11 @@ export default function CompanyPage() {
                       <div className={!isLeft ? "pl-12" : "invisible h-0 md:visible md:h-auto"}>
                         {!isLeft && (
                           <div className="flex flex-col md:flex-row gap-6 items-center">
-                            <div className="shrink-0 bg-card rounded-xl p-6 border border-border hover:border-primary transition-all shadow-sm w-full md:w-40 text-center">
+                            <div className="shrink-0 bg-card rounded-[32px] p-6 border border-border hover:border-primary transition-all shadow-sm w-full md:w-40 text-center">
                               <div className="text-3xl font-black text-primary mb-1">{milestone.year}</div>
                               <h3 className="text-lg font-bold text-foreground">{milestone.title}</h3>
                             </div>
-                            <div className="bg-card rounded-xl p-5 border border-border shadow-sm text-left hidden md:block">
+                            <div className="bg-card rounded-[32px] p-5 border border-border shadow-sm text-left hidden md:block">
                               <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                                 {milestone.extra}
                               </p>
@@ -192,13 +197,13 @@ export default function CompanyPage() {
           <p className="text-xl mb-10 text-primary-foreground/90">
             글로벌 콘텐츠 현지화의 미래를 함께 만들어갈 동료를 기다립니다
           </p>
-          <a
+          <Link
             href="/contact"
             className="inline-flex items-center bg-background text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-background/90 transition-all shadow-xl"
           >
             채용 정보 보기
             <ArrowRight className="ml-2 w-5 h-5" />
-          </a>
+          </Link>
         </div>
       </section>
     </div>

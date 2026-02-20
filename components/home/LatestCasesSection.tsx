@@ -2,6 +2,7 @@ import Link from "next/link";
 import Card from "@/components/ui/Card";
 import Section from "@/components/ui/Section";
 import type { NotionContentItem } from "@/lib/notion/types";
+import { EmptyState, ErrorState } from "@/components/ui/states";
 
 interface LatestCasesSectionProps {
   title: string;
@@ -23,7 +24,11 @@ export default function LatestCasesSection({
       <h2 className="text-center text-2xl font-bold text-gray-900">{title}</h2>
 
       {!cases.length ? (
-        <p className="mt-8 text-center text-gray-500">{fallbackLabel || emptyLabel}</p>
+        fallbackLabel ? (
+          <ErrorState className="mt-8" title="Unable to load cases" description={fallbackLabel} />
+        ) : (
+          <EmptyState className="mt-8" title="No case studies yet" description={emptyLabel} />
+        )
       ) : (
         <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
           {cases.map((item) => (

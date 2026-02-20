@@ -1,6 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
+import { UNSPLASH_IMAGES } from "@/lib/imageMap";
 
 interface WhyItem {
   title: string;
@@ -22,21 +24,21 @@ export default function WhyNililiaSection({ title, items }: WhyNililiaSectionPro
       number: '01',
       title: items[0]?.title ?? '압도적인 기술력으로',
       description: items[0]?.description ?? '닐리리아의 독자 기술은 단순히 번역을 효율화 하는 것에서 그치지 않습니다. 일하는 방식 전체를 혁신합니다.',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800',
+      image: UNSPLASH_IMAGES.whyTech,
       tags: ['표준·자동화된 워크플로', '생산율을 높이는 에디터', '자동화 품질 관리']
     },
     {
       number: '02',
       title: items[1]?.title ?? '콘텐츠 세계화 과정 전반 지원',
       description: items[1]?.description ?? '번역, 자막 처리, 더빙 등 현지화 전 과정을 지원합니다. 더 적은 리소스로 더 많은 콘텐츠를 세계화해 보세요.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800',
+      image: UNSPLASH_IMAGES.whyGlobal,
       tags: ['웹툰 디자인', '영상 디자인', '보이스오버 / 더빙']
     },
     {
       number: '03',
       title: items[2]?.title ?? '원스톱으로 손쉬운 콘텐츠 유통',
       description: items[2]?.description ?? '작품 선정부터 라이선싱 협상, 수익 정산까지 전 과정을 지원하는 닐리리아는 믿을 수 있는 유통 파트너입니다.',
-      image: 'https://images.unsplash.com/photo-1551288049-bbbda536ad37?auto=format&fit=crop&q=80&w=800',
+      image: UNSPLASH_IMAGES.whyDistribution,
       tags: ['번거로움 없는 수출', '수준 높은 번역·현지화']
     }
   ];
@@ -122,10 +124,12 @@ export default function WhyNililiaSection({ title, items }: WhyNililiaSectionPro
                 >
                   {extendedReasons.map((reason, idx) => (
                     <div key={idx} className="h-[450px] w-full relative shrink-0">
-                      <img 
-                        src={reason.image} 
-                        alt={reason.title} 
-                        className="w-full h-full object-cover"
+                      <Image
+                        src={reason.image}
+                        alt={reason.title}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                        className="h-full w-full object-cover"
                       />
                     </div>
                   ))}
