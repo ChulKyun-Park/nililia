@@ -3,19 +3,15 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const imageHostAllowlistPath = join(ROOT, "config/image-host-allowlist.json");
+const imageHostAllowlist = JSON.parse(readFileSync(imageHostAllowlistPath, "utf8"));
+const allowedImageHosts = new Set([...imageHostAllowlist.unsplash, ...imageHostAllowlist.notionThumbnails]);
 
 const IMAGE_POLICY = {
   includeDirectories: ["app", "components", "lib", "src"],
   includeFiles: ["next.config.ts", "next.config.js", "next.config.mjs", "next.config.cjs"],
   includeExtensions: new Set([".ts", ".tsx", ".js", ".jsx", ".md", ".mdx", ".mjs", ".cjs", ".json", ".css"]),
-  allowedImageHosts: new Set([
-    "images.unsplash.com",
-    "secure.notion-static.com",
-    "prod-files-secure.s3.us-west-2.amazonaws.com",
-    "www.notion.so",
-    "file.notion.so",
-    "s3.us-west-2.amazonaws.com",
-  ]),
+  allowedImageHosts,
   forbiddenHosts: new Set(["static.readdy.ai"]),
 };
 
