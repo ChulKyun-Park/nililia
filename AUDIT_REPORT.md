@@ -92,3 +92,47 @@
 ### CI default-branch alignment
 - Repository default branch is `work`, so CI push triggers were updated to include `work` (and `main` for compatibility).
 - Expected merge sequencing for the rollout remains: A -> B -> C -> D.
+
+## Release checkpoints
+
+### checkpoint: gates G1-G4 green
+- Timestamp (Asia/Seoul): 2026-02-20 11:36:50 KST
+- Commit SHA: pending (set by checkpoint commit)
+- Green gates: G1 npm ci, G2 lint, G3 image-policy, G4 build
+- Changes:
+  - Added locale support extension with `ja` route coverage while preserving existing locale setup.
+  - Added SEO metadata layouts for About, Services, and Contentsflys route segments.
+  - Improved services/contentsflys link semantics by removing nested interactive Link+button patterns.
+
+### checkpoint: functional gates G5-G8 green
+- Timestamp (Asia/Seoul): 2026-02-20 11:39:10 KST
+- Commit SHA: pending (set by checkpoint commit)
+- Green gates: G5 locale routing/links, G6 key page rendering, G7 Cases/News list state UX + no nested interactive in list pages, G8 Notion thumbnail fallback resilience
+- Changes:
+  - Added `ja` locale message file and routing/header language options, and aligned middleware locale matcher for live routing.
+  - Verified locale/page route health (`ko/en/ja/id` and key pages) with HTTP status checks.
+  - Preserved Notion list loading/empty/error state wiring and fallback thumbnail behavior with no runtime crash paths.
+
+### checkpoint: quality/ops gates G9-G12 green
+- Timestamp (Asia/Seoul): 2026-02-20 11:40:53 KST
+- Commit SHA: pending (set by checkpoint commit)
+- Green gates: G9 SEO baseline, G10 a11y baseline, G11 image/perf sanity, G12 ops readiness
+- Changes:
+  - Added route-level metadata baselines for About/Services/Contentsflys and dynamic metadata for Services detail pages.
+  - Added `DEPLOY.md` with build/run/env/image-allowlist/rollback/incident guidance.
+  - Maintained `next/image` usage and stable image sizing for key visual sections to reduce layout shift risk.
+  - Removed remaining Link+button nesting in Services CTAs to improve keyboard/accessibility semantics.
+
+
+### release-cut validation checklist
+- Timestamp (Asia/Seoul): 2026-02-20 12:05:00 KST
+- Latest commit SHA at validation start: `3827049`
+- [ ] CI run confirmation (attach Actions URL for this branch/PR)
+- [ ] Notion failure-mode test: invalidate `NOTION_API_KEY` in preview/staging and verify News/Cases fallback states render without runtime crash
+- [ ] Secrets hygiene scan completed: `git grep -nE "NOTION|TOKEN|SECRET|API_KEY" -- ':!*.lock'` (pattern scan only; do not print secret values in reports)
+- [ ] Post-deploy URL checks return HTTP 200 for `/`, `/en`, `/ja`, `/id`, `/en/services`, `/en/cases`, `/en/news`
+- [ ] Post-deploy smoke confirms no console errors on key pages and fallback thumbnail renders when remote thumbnail fails
+
+### robots/sitemap note
+- `robots.txt` and `sitemap.xml` are currently intentionally omitted pending production canonical domain decision.
+- Add them at release cut once the canonical URL is finalized to avoid indexing a temporary/staging hostname.

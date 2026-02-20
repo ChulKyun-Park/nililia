@@ -103,10 +103,8 @@ export default function ServicesPage() {
                   AI 기반 자동화 번역 플랫폼으로 빠르고 정확한 콘텐츠 현지화를 제공합니다.<br />
                   실시간 협업과 효율적인 워크플로우를 경험하세요.
                 </p>
-                <Link href="/contentsfly">
-                  <button className="inline-flex items-center bg-primary text-primary-foreground px-8 py-3 rounded-xl font-bold transition-all hover:bg-primary/90 active:scale-95">
-                    자세히 보기 <ArrowRight className="ml-2 w-5 h-5" />
-                  </button>
+                <Link href="/contentsfly" className="inline-flex items-center rounded-xl bg-primary px-8 py-3 font-bold text-primary-foreground transition-all hover:bg-primary/90 active:scale-95">
+                  자세히 보기 <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>
             </div>
@@ -121,10 +119,8 @@ export default function ServicesPage() {
                   프리미엄 전문 번역 서비스로 문화적 맥락과 뉘앙스를 완벽히 반영합니다.<br />
                   전문 번역가와 원어민 검수자가 최고 품질을 보장합니다.
                 </p>
-                <Link href="/contentsflys">
-                  <button className="inline-flex items-center bg-primary text-primary-foreground px-8 py-3 rounded-xl font-bold transition-all hover:bg-primary/90 active:scale-95">
-                    자세히 보기 <ArrowRight className="ml-2 w-5 h-5" />
-                  </button>
+                <Link href="/contentsflys" className="inline-flex items-center rounded-xl bg-primary px-8 py-3 font-bold text-primary-foreground transition-all hover:bg-primary/90 active:scale-95">
+                  자세히 보기 <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>
             </div>
@@ -213,10 +209,8 @@ export default function ServicesPage() {
       <section className="py-24 bg-[#0097FE]">
         <Container className="text-center">
           <h2 className="text-3xl md:text-5xl font-black text-white mb-10 tracking-tighter">프로젝트를 시작할 준비가 되셨나요?</h2>
-          <Link href="/contact">
-            <button className="bg-white text-[#0097FE] px-10 py-5 rounded-xl font-bold text-xl hover:bg-white/90 transition-all shadow-2xl flex items-center mx-auto active:scale-95">
-              무료 상담 신청 <ArrowRight className="ml-2 w-6 h-6" />
-            </button>
+          <Link href="/contact" className="mx-auto inline-flex items-center rounded-xl bg-white px-10 py-5 text-xl font-bold text-[#0097FE] shadow-2xl transition-all hover:bg-white/90 active:scale-95">
+            무료 상담 신청 <ArrowRight className="ml-2 h-6 w-6" />
           </Link>
         </Container>
       </section>

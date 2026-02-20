@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
   push:
-    branches: [work, main]
+    branches: [release-candidate, work, main]
 
 jobs:
   quality:
